@@ -1,6 +1,8 @@
+pysqlite3-binary
+chromadb-client
 streamlit
 requests
 crewai
 litellm
 python-dotenv
-google-generativeai
+google-generativeai 
