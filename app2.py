@@ -119,11 +119,10 @@ persona_identity_images = {
     "savi": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
 }
 
-
 llm = LLM(
     model="gemini/gemini-2.0-flash-001",
     api_key=GEMINI_API_KEY,
-)
+) 
 
 creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
