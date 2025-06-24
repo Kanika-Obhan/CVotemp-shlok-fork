@@ -1085,7 +1085,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                 # call_gemini_api now handles the streaming display directly in the chat message area
                 cleaned_response = call_gemini_api(
                     query=prompt,
-                    text=sd_malem_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
+                    text=sg_malem_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
                     previous_conversation=st.session_state.previous_conversation,
                     gender=user_gender,
                     username=st.session_state.username,
