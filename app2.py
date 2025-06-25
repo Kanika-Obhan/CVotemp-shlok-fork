@@ -873,7 +873,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.session_state.activity_in_progress = "i_would_never"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "I Would Never... Okay, I would never, ever, let someone else finish my last serving of Homemade Guac. No Way. Now, your turn: What's something you'd NEVER do in a relationship? And then, what if love made you try?"})
-            st.session_state.activity _explainer_expanded = False
+            st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Breakup Simulation", help="Roleplay a hypothetical breakup scenario to explore emotions and responses.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "breakup_simulation"
