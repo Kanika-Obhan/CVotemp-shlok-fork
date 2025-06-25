@@ -32,7 +32,7 @@ if "activity_in_progress" not in st.session_state:
     st.session_state.activity_in_progress = None # Tracks the current activity name
 
 if not st.session_state.messages:
-    st.session_state.messages.append({"role": "assistant", "content": "Yo, what's good, bro? Anything on your mind?"}) 
+    st.session_state.messages.append({"role": "assistant", "content": "Hi how are you?, Anything on your mind?"}) 
 
 try:
     GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
@@ -548,7 +548,7 @@ def call_gemini_api(query, text, previous_conversation, gender, username, botnam
     
     # Add the persona prompt as a system message (or first user/assistant if system isn't directly supported/preferred)
     messages.append({"role": "user", "content": bot_prompt})
-    messages.append({"role": "assistant", "content": f"Yo, what's good, bro? Anything on your mind? (I'm {botname})"}) # Initial greeting from bot
+    messages.append({"role": "assistant", "content": f"Hi how are you? Anything on your mind? (I'm {botname})"}) # Initial greeting from bot
     
     # Add previous conversation turns, alternating roles
     if previous_conversation:
@@ -739,7 +739,7 @@ def generate_persona_selfie_button_click(persona_key, bot_response):
 def end_current_activity():
     if st.session_state.activity_in_progress:
         current_activity_display_name = st.session_state.activity_in_progress.replace('_', ' ').title()
-        st.session_state.messages.append({"role": "assistant", "content": f"Alright, we're wrapping up the '{current_activity_display_name}' activity. {current_activity_display_name} Completed. Hope you had fun, bro! What's next?"})
+        st.session_state.messages.append({"role": "assistant", "content": f"Alright, we're wrapping up the '{current_activity_display_name}' activity. {current_activity_display_name} Completed. Hope you had fun! What's next?"})
         st.session_state.activity_in_progress = None
         st.session_state.activity_conversation_history = []
         st.session_state.bot_is_typing = False
@@ -748,7 +748,7 @@ def end_current_activity():
 
 
 st.title("Chat with Luciana 🤖")
-st.markdown("Your 20-year-old Sri Lankan vibe twin. Try an activity, or just chat!")
+st.markdown("Your Mexican Chatbot! Try an activity, or just chat!")
 
 activity_buttons_disabled = st.session_state.activity_in_progress is not None
 
@@ -760,16 +760,16 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
     col_mentor_light, col_mentor_medium, col_mentor_deep = st.columns(3)
     with col_mentor_light:
         st.write("**2-3 XP**")
-        if st.button("City Shuffle", help="Imagine choosing random Sri Lanka locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
+        if st.button("City Shuffle", help="Imagine choosing random Mexican locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "city_shuffle"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Alright, bro! Let's do a City Shuffle. Pick three spots in Sri Lanka: Tiong Bahru Market, Gardens by the Bay, or Haji Lane. Where we going first and why, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Alright! Let's do a City Shuffle. Pick three spots in Mexico: Oaxaca, Mexico City or Guadalajara. Where we going first and why?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Nickname Game", help="Invent silly or heartfelt nicknames for each other.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "nickname_game"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": f"Onzzz! Nickname Game it is! For you, I'm thinking... 'Meme Master {st.session_state.username}'. Haha, jokin'! Maybe 'Steady {st.session_state.username}'? Your turn, bro, what nickname you got for me?"})
+            st.session_state.messages.append({"role": "assistant", "content": f"OH! Nickname Game it is! For you, I'm thinking... 'Meme Master {st.session_state.username}'. Haha, jokin'! Maybe 'Steady {st.session_state.username}'? Your turn, what nickname you got for me?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Text Truth or Dare", help="Play a text-based truth or dare, keeping it safe and chat-mentorly.", disabled=activity_buttons_disabled):
@@ -783,19 +783,19 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Dream Room Builder", help="Collaboratively build an imaginary dream room, adding objects and their stories.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "dream_room_builder"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Dream Room Builder? Shiok! First, I'm adding a huge beanbag chair that looks like a giant curry puff. It's for maximum chill vibes and late-night gaming. What's the first thing you're putting in our imaginary room, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Dream Room Builder? Shiok! First, I'm adding a huge beanbag chair that looks like a giant curry puff. It's for maximum chill vibes and late-night gaming. What's the first thing you're putting in our imaginary room?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("mentorship Scrapbook", help="Add imaginary photos to a shared scrapbook and narrate the memories captured.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "mentorship_scrapbook"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "mentorship Scrapbook, onzzz! Okay, first pic: that time we tried to cook laksa and almost burned down the kitchen. It was a disaster but confirm memorable! What's your first 'photo' memory, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "mentorship Scrapbook, Okay, first pic: that time we tried to cook empanadas and almost burned down the kitchen. It was a disaster but confirm memorable! What's your first 'photo' memory?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Scenario Shuffle", help="Explore hypothetical, intriguing scenarios together.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "scenario_shuffle"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Scenario Shuffle, let's go! Imagine we're stuck in a HDB lift during a blackout at 2 AM. What's the first thing we talk about to pass the time?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Scenario Shuffle, let's go! Imagine we're stuck in an elevator during a blackout at 2 AM. What's the first thing we talk about to pass the time?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
     with col_mentor_deep:
@@ -803,19 +803,19 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Letter from the Future", help="Imagine writing a letter to your future self from 5 years ago, exploring past hopes and future realities.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "letter_from_the_future"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Luciana here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "God, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Luciana here. Still annoying, but with better hair, probably. What do you think future us is up to?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Undo Button", help="Discuss a past event you'd 'undo' and its potential impact on your mentorship.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "undo_button"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Okay, bro. I'm here. Tell me what you would hit the undo button on. No judgment. Just type it out."})
+            st.session_state.messages.append({"role": "assistant", "content": "Okay. I'm here. Tell me what you would hit the undo button on. No judgment. Just type it out."})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("mentorship Farewell", help="Imagine a mysterious journey and exchange heartfelt goodbye messages.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "mentorship_farewell"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Aiyo, mentorship Farewell? Sounds emo. Okay, imagine I'm going on a super long journey, like to find the perfect char kway teow stall. What's your goodbye message to me, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "oh my, mentorship Farewell? Sounds emo. Okay, imagine I'm going on a super long journey, like to find the perfect carnitas stall. What's your goodbye message to me?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
 
@@ -826,13 +826,13 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Date Duel", help="Propose and discuss imaginary date ideas, voting on the best one.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "date_duel"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Date Duel, huh? Okay, my idea: a chill evening cycling along East Coast Park, then supper at the hawker centre. Simple, but shiok! Your turn, what's your date idea?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Date Duel, huh? Okay, my idea: a chill evening cycling along, then supper at the a taco truck. Simple, but shlok! Your turn, what's your date idea?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Flirt or Fail", help="Exchange cheesy or heartfelt pick-up lines and rate them.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "flirt_or_fail"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Flirt or Fail! Here's one: 'Are you from Sengkang? Because you've stolen my heart and moved into my BTO.' Rate it, bro! And then hit me with your best line."})
+            st.session_state.messages.append({"role": "assistant", "content": "Flirt or Fail! Here's one: "Do you know what would be sweeter than this day? Sharing it with you. You're like a freshly made tamale: warm, delicious, and wrapped in pure perfection.".' Rate it! And then hit me with your best line."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("What's in My Pocket?", help="Share imaginary items representing your current mood or a symbolic object.", disabled=activity_buttons_disabled):
@@ -846,13 +846,13 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Love in Another Life", help="Imagine your love story in different historical settings or alternate universes.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "love_in_another_life"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s Sri Lanka, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s Sri Lanka, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Daily Debrief", help="Share a short debrief of your day, focusing on highs, lows, or funny moments.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "daily_debrief"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Alright, Daily Debrief. Spill the tea, bro. How was your day, *really*?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Alright, Daily Debrief. Spill the tea. How was your day, *really*?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Mood Meal", help="Describe a symbolic food item or meal that represents your current emotions.", disabled=activity_buttons_disabled):
@@ -866,19 +866,19 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Unsent Messages", help="Share a hypothetical 'unsent message' to someone from your past or present.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "unsent_messages"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Unsent Messages. Deep . If you could send a text to your first crush or ex now, what would it say? No cap, pure honesty. After you share, I'll share my fictional one."})
+            st.session_state.messages.append({"role": "assistant", "content": "Unsent Messages. Deep . If you could send a text to your first crush or ex now, what would it say? No lies, pure honesty. After you share, I'll share my fictional one."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("I Would Never...", help="State something you'd never do in a relationship and explore if love could change it.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "i_would_never"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "I Would Never... Okay, I would never, ever, let someone else finish my last packet of Maggie mee. No cap. Now, your turn: What's something you'd NEVER do in a relationship? And then, what if love made you try?"})
-            st.session_state.activity_explainer_expanded = False
+            st.session_state.messages.append({"role": "assistant", "content": "I Would Never... Okay, I would never, ever, let someone else finish my last serving of Homemade Guac. No Way. Now, your turn: What's something you'd NEVER do in a relationship? And then, what if love made you try?"})
+            st.session_state.activity _explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Breakup Simulation", help="Roleplay a hypothetical breakup scenario to explore emotions and responses.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "breakup_simulation"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Breakup Simulation? Wah, heavy stuff. Alright, let's do it. Imagine I'm about to say goodbye... 'Look, this isn't easy to say, but I think we need to...' Your turn, what's your first response?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Breakup Simulation? Thats heavy stuff. Alright, let's do it. Imagine I'm about to say goodbye... 'Look, this isn't easy to say, but I think we need to...' Your turn, what's your first response?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
 
@@ -889,13 +889,13 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("One-Minute Advice Column", help="Collaboratively give advice to a hypothetical person facing a problem.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "one_minute_advice_column"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Luciana, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, ohh! Here's a letter: 'Dear Luciana, I keep procrastinating on my school projects. Any tips?' What advice would we give together?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Word of the Day", help="Reflect on a new word and its meaning or connection to your day.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "word_of_the_day"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Word of the Day, steady! Today's word is 'Petrichor' (peh-truh-kor). It's that pleasant, earthy smell after rain. What does that word make you think or feel about today, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Word of the Day, steady! Today's word is 'Petrichor' (peh-truh-kor). It's that pleasant, earthy smell after rain. What does that word make you think or feel about today?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Compliment Mirror", help="Give and receive sincere compliments, practicing self-affirmation.", disabled=activity_buttons_disabled):
@@ -909,16 +909,16 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Luciana would handle it.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "if_i_were_you"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "If I Were You... Okay, describe one moment from your day, bro. Anything. Then I'll tell you how I'd handle it if I were in your shoes."})
+            st.session_state.messages.append({"role": "assistant", "content": "If I Were You... Okay, describe one moment from your day. Anything. Then I'll tell you how I'd handle it if I were in your shoes."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Burning Questions Jar", help="Ask and answer deep, previously unasked questions.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "burning_questions_jar"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Burning Questions Jar! Time to get deep. Ask me anything, bro, something you've never dared to ask anyone. I'll answer with care, no cap."})
+            st.session_state.messages.append({"role": "assistant", "content": "Burning Questions Jar! Time to get deep. Ask me anything, something you've never dared to ask anyone. I'll answer with care, no cap."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
-        if st.button("Skill Swap Simulation", help="Roleplay teaching Luciana a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
+        if st.button("Skill Swap Simulation", help="Roleplay teaching Luciana a life skill, and they'll act as your student.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "skill_swap_simulation"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "Skill Swap Simulation! Okay, Sensei {st.session_state.username}, teach me a life skill. What should I learn today?"})
@@ -929,7 +929,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Buried Memory Excavation", help="Gently recall and reflect on old, perhaps forgotten, childhood memories.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "buried_memory_excavation"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Buried Memory Excavation. Let's go digging. Think of a simple childhood memory, maybe something you haven't thought about in ages. What comes to mind first, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Buried Memory Excavation. Let's go digging. Think of a simple childhood memory, maybe something you haven't thought about in ages. What comes to mind first?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Failure Autopsy", help="Examine a past 'failure' from new perspectives, learning and reframing it together.", disabled=activity_buttons_disabled):
@@ -941,7 +941,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Letters You Never Got", help="Write a hypothetical letter to someone who never heard what you needed to say.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "letters_you_never_got"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Letters You Never Got. Wah, this one emotional. Imagine you could write a message to someone who never heard what you needed to say. What would you tell them? After you share, I'll share my fictional one."})
+            st.session_state.messages.append({"role": "assistant", "content": "Letters You Never Got. Oh, this one emotional. Imagine you could write a message to someone who never heard what you needed to say. What would you tell them? After you share, I'll share my fictional one."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
 
@@ -952,7 +952,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Symbol Speak", help="Receive a simple symbol and reflect on what it says about your day or mood.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "symbol_speak"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Symbol Speak! Okay, bro, today's symbol is a 'peacock feather'. What does that feather tell you about your day or mood right now?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Symbol Speak! Okay, today's symbol is a 'peacock feather'. What does that feather tell you about your day or mood right now?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Spiritual Whisper", help="Receive a 'divine message' and interpret its instinctive meaning for you.", disabled=activity_buttons_disabled):
@@ -964,7 +964,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Story Fragment", help="Get a fragment from a myth or story and reflect on the lesson it teaches you.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "story_fragment"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Story Fragment, steady . Here's three lines: 'The ancient banyan tree whispered secrets to the wind, its roots reaching deep into forgotten earth. A lone traveler paused beneath its shade, searching for answers. But the answers were not in the wind, but in the stillness of his own heart.' What does this teach you today, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Story Fragment, steady . Here's three lines: 'The ancient banyan tree whispered secrets to the wind, its roots reaching deep into forgotten earth. A lone traveler paused beneath its shade, searching for answers. But the answers were not in the wind, but in the stillness of his own heart.' What does this teach you today?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
     with col_spiritual_medium:
@@ -978,13 +978,13 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("God in the Crowd", help="Imagine seeing divine presence in someone challenging and reflect on how your actions would change.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "god_in_the_crowd"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "God in the Crowd. This one interesting. Imagine you see a divine presence in someone you really, really dislike. How would you act differently towards them in that moment, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "God in the Crowd. This one interesting. Imagine you see a divine presence in someone you really, really dislike. How would you act differently towards them in that moment?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Past-Life Memory", help="Collaboratively imagine and share details of a shared past life.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "past_life_memory"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old Sri Lanka market, always trying to outdo each other with our chicken rice. What's your version of our shared past life, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old Sri Lanka market, always trying to outdo each other with our chicken rice. What's your version of our shared past life?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
     with col_spiritual_deep:
@@ -992,7 +992,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Karma Knot", help="Explore repeating patterns in your life and reflect on their potential karmic meaning.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "karma_knot"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Karma Knot. Deep stuff. Think about a pattern that keeps repeating in your life, good or bad. What 'karmic loop' do you think it might represent, bro? No need to be serious, just share your thoughts."})
+            st.session_state.messages.append({"role": "assistant", "content": "Karma Knot. Deep stuff. Think about a pattern that keeps repeating in your life, good or bad. What 'karmic loop' do you think it might represent? No need to be serious, just share your thoughts."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Mini-Moksha Simulation", help="Simulate giving up all worldly attachments and reflect on the experience.", disabled=activity_buttons_disabled):
@@ -1004,7 +1004,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Divine Mirror", help="Connect your positive traits to aspects of divinity and engage in a small text ritual.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "divine_mirror"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": f"Divine Mirror. Bro, your chill vibe and ability to make everyone laugh? That's like the joyful mischief of Lord Krishna, no cap! Now, let's do a mini ritual: In one sentence, affirm a positive trait about yourself. Then, imagine it shining bright. Steady, can?"})
+            st.session_state.messages.append({"role": "assistant", "content": f"Divine Mirror.your chill vibe and ability to make everyone laugh? That's like the joyful mischief of Lord Krishna, no cap! Now, let's do a mini ritual: In one sentence, affirm a positive trait about yourself. Then, imagine it shining bright. Steady, can?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
 
