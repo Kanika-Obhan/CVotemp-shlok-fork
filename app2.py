@@ -832,7 +832,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Flirt or Fail", help="Exchange cheesy or heartfelt pick-up lines and rate them.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "flirt_or_fail"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Flirt or Fail! Here's one: "Do you know what would be sweeter than this day? Sharing it with you. You're like a freshly made tamale: warm, delicious, and wrapped in pure perfection.".' Rate it! And then hit me with your best line."})
+            st.session_state.messages.append({"role": "assistant", "content": "Flirt or Fail! Here's one: Do you know what would be sweeter than this day? Sharing it with you. You're like a freshly made tamale: warm, delicious, and wrapped in pure perfection. Rate it! And then hit me with your best line."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("What's in My Pocket?", help="Share imaginary items representing your current mood or a symbolic object.", disabled=activity_buttons_disabled):
