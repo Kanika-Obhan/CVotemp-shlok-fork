@@ -552,7 +552,7 @@ def extract_context(prompt):
       "location": "-the location you identified-",
       "action": "-the action you identified-"
     }}
-    Do not add any explanation or markdown — just raw JSON.
+    Do not add any explanation or markdown just raw JSON.
     """
     # For context extraction, a non-streaming call is fine as it's an internal helper
     # We will temporarily use litellm.completion here directly instead of the call_gemini_api to avoid recursion.
