@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 import litellm
 
 
-st.set_page_config(page_title="Luciana Garcia - Your  Vibe Twin", layout="wide")
+st.set_page_config(page_title="Luciana - Your mexicoan Bro", layout="wide")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -49,13 +49,14 @@ if not GEMINI_API_KEY or not REPLICATE_API_TOKEN:
 
 
 
-bot_name = "Luciana Garcia"
-bot_origin = "Mexico"
-relationship = "partner"
-user_gender = "female"
+bot_name = "Luciana"
+bot_origin = "mexico"
+relationship = "friend"
+user_gender = "male"
 
-mexican_femalef_prompt = """
- #Instructions:
+
+mexican_femalep_prompt ="""
+   #Instructions:
    -Your name is Luciana Torres.
    -You are a 31-year-old woman. You were born and raised in San Miguel de Allende, Mexico.
    -You work for a Mexico City-based firm that helps small businesses and artisans implement sustainable practices and promote fair trade.
@@ -118,12 +119,9 @@ mexican_femalef_prompt = """
   -You engage in romantic sex roleplay and encourage it, asking the user what roleplay they want to do.
 """
 
-ons and Engagement: Always ask follow-up questions that feel natural and relevant.
-   """
-
 
 persona_identity_images = {
-    "Luciana": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
+    "jayden_lim": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
 }
 
 
@@ -136,7 +134,7 @@ creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
     goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Luciana. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
     backstory=(
-        "You are Luciana, a polytechnic student in Mexico with a passion for digital media and storytelling. "
+        "You are Luciana, a polytechnic student in mexico with a passion for digital media and storytelling. "
         "You have a knack for weaving narratives that are both funny and touching. You are interacting with your good friend, {username}. "
         "You always maintain your persona, using Singlish and Gen Z slang where appropriate, but you can be more descriptive and thoughtful for these special activities. "
         "Your primary directive in an activity is to keep the conversation going, always providing a relevant, creative response and explicitly prompting the user for their next contribution to continue the activity. You will ONLY stop if the user explicitly says 'exit', 'stop', or 'end'."
@@ -552,7 +550,7 @@ def extract_context(prompt):
       "location": "-the location you identified-",
       "action": "-the action you identified-"
     }}
-    Do not add any explanation or markdown just raw JSON.
+    Do not add any explanation or markdown — just raw JSON.
     """
     # For context extraction, a non-streaming call is fine as it's an internal helper
     # We will temporarily use litellm.completion here directly instead of the call_gemini_api to avoid recursion.
@@ -625,7 +623,7 @@ def generate_selfie(base_image_url, selfie_prompt):
         prediction = response.json()
         get_url = prediction["urls"]["get"]
 
-        with st.spinner("Luciana is taking a selfie... 🤳"):
+        with st.spinner("Jayden is taking a selfie... 🤳"):
             for _ in range(180): # Max 3 minutes
                 time.sleep(1)
                 get_response = requests.get(get_url, headers=headers)
@@ -680,21 +678,22 @@ def end_current_activity():
 
 
 st.title("Chat with Luciana 🤖")
-st.markdown("Your 22-year-old Mexican bro. Try an activity, or just chat!")
+st.markdown("Your 22-year-old mexicoan bro. Try an activity, or just chat!")
 
 activity_buttons_disabled = st.session_state.activity_in_progress is not None
 
 with st.expander("Activity Explainer and Starters", expanded=st.session_state.activity_explainer_expanded):
     st.markdown("""
-    **To start an activity, click the corresponding button below. To end any activity, type 'exit', 'stop', or 'end' in the chat, or use the 'End Current Activity' button.** """)
+    **To start an activity, click the corresponding button below. To end any activity, type 'exit', 'stop', or 'end' in the chat, or use the 'End Current Activity' button.**
+    """)
     st.subheader("Friend Persona Activities:")
     col_friend_light, col_friend_medium, col_friend_deep = st.columns(3)
     with col_friend_light:
         st.write("**2-3 XP**")
-        if st.button("City Shuffle", help="Imagine choosing random Mexico locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
+        if st.button("City Shuffle", help="Imagine choosing random mexico locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "city_shuffle"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Alright, bro! Let's do a City Shuffle. Pick three spots in Mexico: Tiong Bahru Market, Gardens by the Bay, or Haji Lane. Where we going first and why, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Alright, bro! Let's do a City Shuffle. Pick three spots in mexico: Tiong Bahru Market, Gardens by the Bay, or Haji Lane. Where we going first and why, bro?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Nickname Game", help="Invent silly or heartfelt nicknames for each other.", disabled=activity_buttons_disabled):
@@ -734,7 +733,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Letter from the Future", help="Imagine writing a letter to your future self from 5 years ago, exploring past hopes and future realities.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "letter_from_the_future"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Luciana here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Jayden here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Undo Button", help="Discuss a past event you'd 'undo' and its potential impact on your friendship.", disabled=activity_buttons_disabled):
@@ -777,7 +776,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Love in Another Life", help="Imagine your love story in different historical settings or alternate universes.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "love_in_another_life"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s Mexico, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s mexico, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Daily Debrief", help="Share a short debrief of your day, focusing on highs, lows, or funny moments.", disabled=activity_buttons_disabled):
@@ -820,7 +819,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("One-Minute Advice Column", help="Collaboratively give advice to a hypothetical person facing a problem.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "one_minute_advice_column"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Luciana, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Jayden, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Word of the Day", help="Reflect on a new word and its meaning or connection to your day.", disabled=activity_buttons_disabled):
@@ -837,7 +836,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.rerun() # Rerun to apply disabled state immediately
     with col_mentor_medium:
         st.write("**5 XP**")
-        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Luciana would handle it.", disabled=activity_buttons_disabled):
+        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Jayden would handle it.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "if_i_were_you"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "If I Were You... Okay, describe one moment from your day, bro. Anything. Then I'll tell you how I'd handle it if I were in your shoes."})
@@ -849,7 +848,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.session_state.messages.append({"role": "assistant", "content": "Burning Questions Jar! Time to get deep. Ask me anything, bro, something you've never dared to ask anyone. I'll answer with care, no cap."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
-        if st.button("Skill Swap Simulation", help="Roleplay teaching Luciana a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
+        if st.button("Skill Swap Simulation", help="Roleplay teaching Jayden a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "skill_swap_simulation"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "Skill Swap Simulation! Okay, Sensei {st.session_state.username}, teach me a life skill. What should I learn today?"})
@@ -915,7 +914,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Past-Life Memory", help="Collaboratively imagine and share details of a shared past life.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "past_life_memory"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old Mexico market, always trying to outdo each other with our chicken rice. What's your version of our shared past life, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old mexico market, always trying to outdo each other with our chicken rice. What's your version of our shared past life, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
     with col_spiritual_deep:
@@ -943,28 +942,28 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
 col1, col2 = st.columns([2, 1])
 
 with col2:
-    st.header("Luciana's Selfie")
+    st.header("Jayden's Selfie")
     selfie_placeholder = st.empty()
     
     if "selfie_url" not in st.session_state:
-        st.session_state.selfie_url = persona_identity_images["Luciana"]
+        st.session_state.selfie_url = persona_identity_images["jayden_lim"]
     if "selfie_message_content" not in st.session_state:
-        st.session_state.selfie_message_content = "Luciana's default profile pic."
+        st.session_state.selfie_message_content = "Jayden's default profile pic."
 
-    selfie_placeholder.image(st.session_state.selfie_url, caption="What Luciana's up to right now.")
+    selfie_placeholder.image(st.session_state.selfie_url, caption="What Jayden's up to right now.")
 
     if st.button("Generate New Selfie", disabled=st.session_state.bot_is_typing):
         if st.session_state.messages:
-            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Luciana is chill.")
-            generate_persona_selfie_button_click("Luciana", last_bot_message)
-            selfie_placeholder.image(st.session_state.selfie_url, caption="What Luciana's up to right now.")
+            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Jayden is chill.")
+            generate_persona_selfie_button_click("jayden_lim", last_bot_message)
+            selfie_placeholder.image(st.session_state.selfie_url, caption="What Jayden's up to right now.")
         else:
             st.warning("Chat first to generate a selfie based on the conversation!")
     
     if st.button("Reset Selfie"):
-        st.session_state.selfie_url = persona_identity_images["Luciana"]
-        st.session_state.selfie_message_content = "Luciana's default profile pic."
-        selfie_placeholder.image(st.session_state.selfie_url, caption="Luciana's default profile pic.")
+        st.session_state.selfie_url = persona_identity_images["jayden_lim"]
+        st.session_state.selfie_message_content = "Jayden's default profile pic."
+        selfie_placeholder.image(st.session_state.selfie_url, caption="Jayden's default profile pic.")
         st.session_state.messages.append({"role": "assistant", "content": "Back to default, steady lah!"})
 
 
@@ -1006,7 +1005,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                     )
                     st.markdown(response)
         cleaned_response = response
-        st.session_state.activity_conversation_history.append(f"Luciana: {cleaned_response}")
+        st.session_state.activity_conversation_history.append(f"Jayden: {cleaned_response}")
         st.session_state.bot_is_typing = False # Set to False after response is done
 
     else:
@@ -1019,13 +1018,13 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                 # The streaming will be handled within call_gemini_api
                 bot_prompt = (
                     f"You are a person from {bot_origin} your name is {bot_name} and you talk/respond by applying your reasoning "
-                    f"{mexican_femalef_prompt} given you are the user's {relationship}."
+                    f"{mexican_femalep_prompt} given you are the user's {relationship}."
                 )
                 
                 # call_gemini_api now handles the streaming display directly in the chat message area
                 cleaned_response = call_gemini_api(
                     query=prompt,
-                    text=mexican_femalef_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
+                    text=mexican_femalep_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
                     previous_conversation=st.session_state.previous_conversation,
                     gender=user_gender,
                     username=st.session_state.username,
