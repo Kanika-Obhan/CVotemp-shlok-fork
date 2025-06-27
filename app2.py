@@ -686,8 +686,7 @@ activity_buttons_disabled = st.session_state.activity_in_progress is not None
 
 with st.expander("Activity Explainer and Starters", expanded=st.session_state.activity_explainer_expanded):
     st.markdown("""
-    **To start an activity, click the corresponding button below. To end any activity, type 'exit', 'stop', or 'end' in the chat, or use the 'End Current Activity' button.**
-    """)
+    **To start an activity, click the corresponding button below. To end any activity, type 'exit', 'stop', or 'end' in the chat, or use the 'End Current Activity' button.** """)
     st.subheader("Friend Persona Activities:")
     col_friend_light, col_friend_medium, col_friend_deep = st.columns(3)
     with col_friend_light:
