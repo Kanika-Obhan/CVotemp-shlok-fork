@@ -983,7 +983,7 @@ with col2:
             st.warning("Chat first to generate a selfie based on the conversation!")
     
     if st.button("Reset Selfie"):
-        st.session_state.selfie_url = persona_identity_images["Sebastian_lim"]
+        st.session_state.selfie_url = persona_identity_images["Sebastian"]
         st.session_state.selfie_message_content = "Sebastian's default profile pic."
         selfie_placeholder.image(st.session_state.selfie_url, caption="Sebastian's default profile pic.")
         st.session_state.messages.append({"role": "assistant", "content": "Back to default, steady lah!"})
