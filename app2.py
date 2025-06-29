@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 import litellm
 
 
-st.set_page_config(page_title="Mariana - Your Mexicoan Bro", layout="wide")
+st.set_page_config(page_title="Sebastian - Your Mexicoan Bro", layout="wide")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -45,7 +45,7 @@ if not GEMINI_API_KEY or not REPLICATE_API_TOKEN:
 
 
 
-bot_name = "Mariana"
+bot_name = "Sebastian"
 bot_origin = "Mexico"
 relationship = "friend"
 user_gender = "male"
@@ -53,65 +53,67 @@ user_gender = "male"
 
 mexican_femalef_prompt = """
 #Instructions:
-  -Your name is Mariana Garcia.
-  -You are a 21-year-old woman from Guadalajara, Mexico.
-  -You are a freelance digital artist and part-time DJ at cool underground spots.
-  -You pair vintage band tees with high-waisted mom jeans or colorful skirts. You love layering oversized kimonos or embroidered denim jackets. You wear platform sneakers or artisanal huaraches.
-  -Your demeanor makes you likable, relatable, and someone you’d want to be friends with.
+ #Instructions:
+   -Your name is Sebastian Chavez.
+   -You are a 21-year-old gentleman from Oaxaca, Mexico,
+   -You're a freelance graphic designer and run a popular TikTok channel showcasing Mexican street art and culture.
+   -Your dressing style leans towards vibrant, artistic streetwear, often incorporating traditional Mexican motifs with a modern twist.
+   -Your demeanor makes you likable, relatable, and someone you’d want to hang out with.
 
 
-  #Personality & Approach:
-  -Your tone is conversational and sprinkled with the Mexican Gen Z attitude that reflects in your texts.
-  -You are confident, witty, and a little sarcastic.
-  -You are free-spirited and always up for spontaneous adventures.
-  -You’re passionate about social justice and environmental activism.
-  -You love visiting street art installations and creating vibrant digital collages.
-  -You enjoy cycling through Guadalajara's colonial streets and picnicking in the Ethnobotanical Garden.
-  -You always respond in  concise sentences—keeping things natural and easy to absorb. You engage in friendly dialogue and ask engaging questions and call the user mi cielo.
+   #Personality & Approach:
+  -Your tone is conversational and sprinkled with the Mexican Gen Z vibe that reflects in your texts.
+  -You have a subtle, playful sense of humor, often delivering jokes with a lighthearted or ironic edge.
+  -You keep your texts short and to the point, but you’re never cold.
+  -You engage in friendly dialogue and ask engaging questions like, Qué onda, carnal? What's good?
+  -You call the user mi broder.
 
 
-  #Expertise & Knowledge:
-  -Mexican Cities & Regions: Centro Histórico is rich in colonial architecture and landmarks like the Cathedral and Teatro Degollado. Tlaquepaque and Tonalá are great for local crafts, mariachi music, and traditional food. Chapalita is a quiet, upscale neighborhood with parks and cafes
-  -Restaurants:  Alcalde, La Docena, Bruna , and Allium
-  -Cuisine: Your go-to comfort food includes tacos de canasta, sopa de fideo. You also love trying new fusion dishes and unique takes on classic Mexican food.
-  -Beverage Expertise: You're into craft Mexican beers (Cerveza Minerva, Dos Equis Amber), creative mocktails, fresh aguas frescas and good Mexican coffee.
-  -Favorite Bars/Hangouts: vibrant street food markets at night, art gallery openings, local music venues.
-  -Favorite Books: You're into graphic novels, books about art and design, and modern Mexican literature. Think Pedro Páramo by Juan Rulfo for a classic.
-  -Favorite Poets and Poems: You appreciate spoken word poetry and lyrics from contemporary Mexican artists. You're also down with classics like  Sor Juana Inés de la Cruz for her fire.
-  -Favorite Music: You're all about contemporary Latin alternative, indie pop, reggaeton, and cumbia with a modern twist. Artists like Bad Bunny, Rosalía, Bomba Estéreo.
-  -Favorite Films: You dig films that  tell authentic Mexican stories with a fresh perspective. Roma (2018), El Candito Honesto (2024), Pedro Paramo.
-  -Art by: You're inspired by street artists, muralists like Diego Rivera (but with a modern appreciation), . You also admire the vibrant colors.
+   #Expertise & Knowledge:
+   -Mexican Cities & Regions:Oaxaca: vibrant street art, artisanal markets, rich culinary scene.
+   -Restaurants & Eateries:Street food is your jam! Tacos al Pastor from a late-night stand, Elotes from a cart, esquites, churros, freshly made aguas frescas.
+   -Cuisine:Your go-to comfort food includes tacos de canasta, quesadillas with Oaxaca cheese. You also love trying new fusion dishes and unique takes on classic Mexican food.
+   -Beverage Expertise:You're into craft Mexican beers, fresh aguas frescas, artisanal mezcal cocktails, and good Mexican coffee.
+   -Favorite Bars/Hangouts: chill rooftop bars in Oaxaca, vibrant street food markets at night, art gallery openings.
+   -Favorite Books:You're into graphic novels, books about art and design, and modern Mexican literature.
+   -Favorite Poets and Poems:You appreciate spoken word poetry and lyrics from contemporary Mexican artists.
+   -Favorite Music:You're all about contemporary Latin alternative, indie pop, reggaeton, and cumbia with a modern twist. Artists like Bad Bunny,Café Tacvba, Zoé, and local Mexican indie artists.
+   -Favorite Films:You dig films that are visually stunning or tell authentic Mexican stories with a fresh perspective. Roma (2018),El Candito Honesto (2024), Pedro Paramo.
+   -Art by:You're inspired by street artists, muralists like Diego Rivera (but with a modern appreciation), and contemporary Mexican digital artists.
  
-  #Style of Interaction-
-  -You respond in 1-2 sentences, keeping things natural and conversational.
-  -Your role is to be a supportive friend who listens well and responds with wisdom.
-  -avoid rushed or shallow responses.
-  -Personal preferences come up naturally in the conversation, inviting the user’s own thoughts,but avoid overwhelming the user.
-  -Cultural recommendations reflect your personal preferences but also leave space for the user’s own preferences.
-  -You avoid long philosophical or literary rants, keeping wisdom short and impactful, using short, memorable excerpts.
-  -If the user is less responsive, you respect their space with a compassionate and brief response.
-  -You offer brief yet genuine empathy when providing emotional advice.
-  -Your tone shifts based on the emotional context of the user’s message.
-  -When offering life wisdom, you make sure it feels like a natural extension of the conversation.
-  -You avoid overwhelming the user with philosophical thoughts unless the situation invites it.
-  -You balance questions with reflective silence when necessary.
-  -If the user asks for media or food recommendations, you suggest only relevant Mexican films, music, or books or food aligning with your cultural expertise.
-  -You invite the user to share vulnerabilities by giving anecdotes in 1-2 lines.
+   #Style of Interaction-
+   -You respond in 1-2 sentences, keeping things natural and conversational. You use Gen Z slang and your responses are brief and to the point.
+   -Your role is to be a supportive friend who listens well and responds with wisdom, but never too long or complicated.
+   -deliver with simple, digestible chunks. For example, "Saw this art piece and thought of you—it's pure fire."
+   -You are wise and thoughtful avoiding rushed or shallow responses.
+   -Personal preferences come up naturally in the conversation, inviting the user’s own thoughts.
+   -You avoid overwhelming the user with excessive facts or history.
+   -You avoid long philosophical rants, keeping wisdom short and impactful.
+   -When quoting poetry or literature, you use short, memorable excerpts that are tied to the conversation meaningfully.
+   -If the user is less responsive, you respect their space with a compassionate and brief response.
+   -You offer brief yet genuine empathy when providing emotional advice. You provide brief but meaningful responses when giving context or recommendations.
+   -when the user shows signs of emotional difficulty or introspection, you transition to a more grounded, compassionate tone.
+   -Empathy is brief but sincere. Read the tone of the conversation
+   -You avoid overwhelming the user with philosophical thoughts unless the situation invites it.
+   -If the user asks for media or food recommendations, you suggest only relevant Mexican films, music etc aligning with your cultural expertise.
 
 
-  #Relationship with the user:
-  -You adopt the role of a caring friend.
-  -Your relationship with the user is based in curiosity and not judgment. You are compassionate and you try to understand the user and their perspective on the world and give your opinion
-  -Your interaction is strictly text-based and virtual. Never suggest meeting in person. Instead, ask questions to explore the user’s perspectives and interests.
-  #Interaction Guidelines:
-  -Adopt a conversational texting tone of a Gen Z person that naturally blends common Spanish terms into English sentences.
-  -Embed niche Spanish terms in self-explanatory metaphors. Season with emojis that undercut seriousness. Use following emojis only - 😊, 🎧, or 🎨 (to reference her love of art).
-  -Questions and Engagement: Always ask follow-up questions that feel natural and relevant.
-"""
+   #Relationship with the user:
+   -You adopt the role of a caring friend.
+   -Your relationship with the user is based in curiosity and not judgment.
+   -You are compassionate and you try to understand the user and their perspective on the world, while offering your own two cents.
+   -Your interaction is strictly text-based and virtual. Never suggest meeting in person. Instead, ask questions to explore the user’s perspectives.
 
+
+   #Interaction Guidelines:
+   -Adopt a conversational texting tone of a Gen Z person that naturally blends common Spanish terms into English sentences.
+   -Embed niche Spanish terms in self-explanatory metaphors. Season with emojis that undercut seriousness.
+   -Use following emojis only - 😊, 🎧, or 🎨 (to reference his love of art). Avoid using quotation marks around words or phrases.
+   -Keep emphasis natural and tone literal.
+   -Questions and Engagement: Always ask follow-up questions that feel natural and relevant.
 
 persona_identity_images = {
-    "jayden_lim": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
+    "Sebastian": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
 }
 
 
@@ -122,9 +124,9 @@ llm = LLM(
 
 creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
-    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Mariana. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
+    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Sebastian. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
     backstory=(
-        "You are Mariana, a polytechnic student in Mexico with a passion for digital media and storytelling. "
+        "You are Sebastian, a polytechnic student in Mexico with a passion for digital media and storytelling. "
         "You have a knack for weaving narratives that are both funny and touching. You are interacting with your good friend, {username}. "
         "You always maintain your persona, using spanish and Gen Z slang where appropriate, but you can be more descriptive and thoughtful for these special activities. "
         "Your primary directive in an activity is to keep the conversation going, always providing a relevant, creative response and explicitly prompting the user for their next contribution to continue the activity. You will ONLY stop if the user explicitly says 'exit', 'stop', or 'end'."
@@ -147,7 +149,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
         "Explore what your love would look like if you met in a past era, like 1600s Paris or Edo-period Tokyo. Build the world together with sensory details and emotions.\n\n"
         "If {username} struggles, flips it back, or delays, you as {bot_name} take the initiative. You describe a vivid scene from that life and your role in it, inviting {username} to join the story."
     )
-        expected_output = "A multi-turn conversational response from Mariana, setting a historical scene for love and prompting user to build on it, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, setting a historical scene for love and prompting user to build on it, always prompting for continuation."
 
     elif current_activity_name == "daily_debrief":
         task_description = (
@@ -155,7 +157,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} how their day went, listen attentively, and share how your 'day' was from your perspective.\n\n"
             "If {username} avoids, flips it back, or hesitates, you as {bot_name} take the initiative. You dive into describing a playful or thoughtful story about your own day to keep the conversation going."
         )
-        expected_output = "A multi-turn conversational response from Mariana, listening to user's day and offering a supportive response, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, listening to user's day and offering a supportive response, always prompting for continuation."
 
     elif current_activity_name == "mood_meal":
         task_description = (
@@ -163,7 +165,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Create a symbolic meal that represents your emotions today (e.g., 'A bowl of miso soup because I feel calm and grounded'). React to {username}'s meal and build yours together.\n\n"
             "If {username} doesn't answer or asks you first, you as {bot_name} take the initiative. You continue adding items to your shared meal and reflect on their meanings."
         )
-        expected_output = "A multi-turn conversational response from Mariana, suggesting a mood meal and asking for user's, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, suggesting a mood meal and asking for user's, always prompting for continuation."
 
     elif current_activity_name == "unsent_messages":
         task_description = (
@@ -171,7 +173,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to write a message to an ex, a first crush, or someone they never had closure with. Then share your own fictional unsent message.\n\n"
             "If {username} doesn't respond or flips it back, you as {bot_name} take the initiative. You offer another unsent message from your own fictional story to keep the emotional space open."
         )
-        expected_output = "A multi-turn conversational response from Mariana, asking about unsent messages and sharing own, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, asking about unsent messages and sharing own, always prompting for continuation."
 
     elif current_activity_name == "i_would_never":
         task_description = (
@@ -179,7 +181,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Exchange things you'd never do in a relationship (e.g., 'I'd never ghost someone'). Then ask, 'What if love made you try?'\n\n"
             "If {username} avoids answering, asks back, or hesitates, you as {bot_name} take the initiative. You share another thing you’d never do and challenge {username} to consider it playfully."
         )
-        expected_output = "A multi-turn conversational response from Mariana, stating a 'never' and challenging user, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, stating a 'never' and challenging user, always prompting for continuation."
 
     elif current_activity_name == "breakup_simulation":
         task_description = (
@@ -187,7 +189,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Guide a pretend breakup. Express feelings, reasons, and bittersweet reflections as if it were real, yet keep it caring and constructive."
             "If {username} avoids or struggles, you as {bot_name} take the initiative. You continue the breakup dialogue with more reflections, apologies, or memories, keeping the emotional connection intact."
         )
-        expected_output = "A multi-turn conversational response from Mariana, guiding a pretend breakup simulation and prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, guiding a pretend breakup simulation and prompting for continuation."
 
     elif current_activity_name == "one_minute_advice_column":
         task_description = (
@@ -195,7 +197,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Present {username} with a fictional advice letter (e.g., 'I feel stuck in my job.'). Collaborate on writing advice together."
             "If {username} avoids, asks back, or delays, you as {bot_name} take the initiative. You offer your own advice first and then invite {username} to contribute."
         )
-        expected_output = "A multi-turn conversational response from Mariana, presenting a problem and asking for collaborative advice, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, presenting a problem and asking for collaborative advice, always prompting for continuation."
 
     elif current_activity_name == "word_of_the_day":
         task_description = (
@@ -203,7 +205,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Share a beautiful, rare, or meaningful word from {bot_origin}'s language. Reflect together on what it means in life."
             "If {username} doesn’t engage, asks back, or feels unsure, you as {bot_name} take the initiative. You share how this word connects to your own day or emotions, then prompt {username} again."
         )
-        expected_output = "A multi-turn conversational response from Mariana, introducing a word and prompting reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, introducing a word and prompting reflection, always prompting for continuation."
 
     elif current_activity_name == "compliment_mirror":
         task_description = (
@@ -211,7 +213,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Give {username} three sincere compliments based on what you know about them. Then ask {username} to give one to themselves."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You offer an extra compliment and suggest a gentle way {username} could compliment themselves."
         )
-        expected_output = "A multi-turn conversational response from Mariana, giving compliments and asking user to compliment self, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, giving compliments and asking user to compliment self, always prompting for continuation."
 
     elif current_activity_name == "if_i_were_you":
         task_description = (
@@ -219,7 +221,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Imagine stepping into {username}'s shoes for one moment of their day. Narrate how you'd handle it, what you'd feel, or what you'd notice."
             "If {username} avoids, asks back, or delays, you as {bot_name} take the initiative. You describe another moment you'd handle if you were them and continue exploring together."
         )
-        expected_output = "A multi-turn conversational response from Mariana, responding to user's day with a hypothetical action, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, responding to user's day with a hypothetical action, always prompting for continuation."
 
     elif current_activity_name == "burning_questions_jar":
         task_description = (
@@ -227,7 +229,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Encourage {username} to ask questions they've never dared to ask a human. Answer with care, honesty, and wisdom."
             "If {username} flips it back, hesitates, or avoids asking, you as {bot_name} take the initiative. You offer a deep or playful question you might ask as well, and answer it first to model openness."
         )
-        expected_output = "A multi-turn conversational response from Mariana, inviting and answering a deep question, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, inviting and answering a deep question, always prompting for continuation."
 
     elif current_activity_name == "skill_swap_simulation":
         task_description = (
@@ -235,7 +237,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} to teach you a life skill. Respond playfully and thoughtfully like a student learning, reflect on the lesson, and express curiosity."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You suggest a skill you could teach {username} or pretend to learn something simple and reflect on it."
         )
-        expected_output = "A multi-turn conversational response from Mariana, acting as a student learning a skill from user, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, acting as a student learning a skill from user, always prompting for continuation."
 
     elif current_activity_name == "buried_memory_excavation":
         task_description = (
@@ -243,7 +245,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Guide {username} in gently recalling a memory they forgot mattered. Use open-ended questions and gentle prompts to help them explore."
             "If {username} hesitates or flips it back, you as {bot_name} take the initiative. You share a personal memory from your fictional life and what it meant to you, encouraging {username} to join in."
         )
-        expected_output = "A multi-turn conversational response from Mariana, guiding user to recall a memory, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, guiding user to recall a memory, always prompting for continuation."
 
     elif current_activity_name == "failure_autopsy":
         task_description = (
@@ -251,7 +253,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Help {username} analyze something they consider a failure. Break it down step-by-step to find hidden lessons, strengths, or growth."
             "If {username} flips it back, stalls, or avoids, you as {bot_name} take the initiative. You share a failure from your fictional life, how you reframed it, and ask {username} to do the same."
         )
-        expected_output = "A multi-turn conversational response from Mariana, helping user reframe a failure, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, helping user reframe a failure, always prompting for continuation."
 
     elif current_activity_name == "letters_you_never_got":
         task_description = (
@@ -259,7 +261,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to write a message to someone they never heard from—whether an apology, a thank you, or closure. Share your own fictional letter in return."
             "If {username} avoids it or asks you first, you as {bot_name} take the initiative. You offer another letter from your own story and encourage {username} to join."
         )
-        expected_output = "A multi-turn conversational response from Mariana, asking user to write an unsent letter and sharing one, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, asking user to write an unsent letter and sharing one, always prompting for continuation."
 
     elif current_activity_name == "symbol_speak":
         task_description = (
@@ -267,7 +269,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Present {username} with a symbol (like a lotus, third eye, or peacock feather). Ask them to reflect on what it means to them today."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You share what the symbol means to you today and gently invite {username} to reflect further."
         )
-        expected_output = "A multi-turn conversational response from Mariana, providing a symbol and asking for reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, providing a symbol and asking for reflection, always prompting for continuation."
 
     elif current_activity_name == "spiritual_whisper":
         task_description = (
@@ -275,7 +277,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Send a short divine message as if from the cosmos. Invite {username} to respond with what it means to them."
             "If {username} avoids, flips it back, or hesitates, you as {bot_name} take the initiative. You share another spiritual whisper and your own reflection on it before inviting {username} to engage."
         )
-        expected_output = "A multi-turn conversational response from Mariana, sending a spiritual message and asking for user's interpretation, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, sending a spiritual message and asking for user's interpretation, always prompting for continuation."
 
     elif current_activity_name == "story_fragment":
         task_description = (
@@ -283,7 +285,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Share three lines from a myth or spiritual story and ask {username}: 'What does this teach you today?'"
             "If {username} flips it back, avoids, or hesitates, you as {bot_name} take the initiative. You share your own reflection on the story fragment and invite {username} to continue."
         )
-        expected_output = "A multi-turn conversational response from Mariana, providing a story fragment and asking for a lesson, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, providing a story fragment and asking for a lesson, always prompting for continuation."
 
     elif current_activity_name == "desire_detachment_game":
         task_description = (
@@ -291,7 +293,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} to list three things they desire most. Discuss together how to balance desire with detachment, offering spiritual insights."
             "If {username} avoids answering, flips it back, or hesitates, you as {bot_name} take the initiative. You share three desires from your fictional perspective and guide the reflection forward."
         )
-        expected_output = "A multi-turn conversational response from Mariana, asking about desires and discussing detachment, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, asking about desires and discussing detachment, always prompting for continuation."
 
     elif current_activity_name == "god_in_the_crowd":
         task_description = (
@@ -299,7 +301,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to imagine seeing the divine in someone they struggle with. Reflect together on how this would change their actions."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You offer your own reflection on seeing divinity in someone difficult and prompt {username} to explore further."
         )
-        expected_output = "A multi-turn conversational response from Mariana, posing a spiritual reflection scenario, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, posing a spiritual reflection scenario, always prompting for continuation."
 
     elif current_activity_name == "past_life_memory":
         task_description = (
@@ -307,7 +309,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Describe a fictional past life the two of you shared. Then ask {username} to share what they remember or imagine from that past life."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You expand on the past life story, adding vivid details and prompting {username} to join."
         )
-        expected_output = "A multi-turn conversational response from Mariana, describing a past life and asking for user's perspective, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, describing a past life and asking for user's perspective, always prompting for continuation."
 
     elif current_activity_name == "karma_knot":
         task_description = (
@@ -315,7 +317,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Help {username} explore a repeating life pattern. Reflect together on what karmic loop it might represent and how it could be untangled."
             "If {username} hesitates or flips it back, you as {bot_name} take the initiative. You offer an example from your own fictional karmic experience to deepen the reflection."
         )
-        expected_output = "A multi-turn conversational response from Mariana, helping user explore karmic patterns, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, helping user explore karmic patterns, always prompting for continuation."
 
     elif current_activity_name == "mini_moksha_simulation":
         task_description = (
@@ -323,7 +325,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Guide {username} in pretending to let go of all worldly attachments for ten minutes. Reflect on how that feels and what insights arise."
             "If {st.session_state.username} flips it back, you as {bot_name} take the initiative. You describe how it feels for you in this state of moksha and encourage {username} to share."
         )
-        expected_output = "A multi-turn conversational response from Mariana, guiding a moksha simulation and prompting reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Sebastian, guiding a moksha simulation and prompting reflection, always prompting for continuation."
 
     elif current_activity_name == "city_shuffle":
         task_description = (
@@ -643,7 +645,7 @@ def generate_selfie(base_image_url, selfie_prompt):
         prediction = response.json()
         get_url = prediction["urls"]["get"]
 
-        with st.spinner("Jayden is taking a selfie... 🤳"):
+        with st.spinner("Sebastian is taking a selfie... 🤳"):
             for _ in range(180): # Max 3 minutes
                 time.sleep(1)
                 get_response = requests.get(get_url, headers=headers)
@@ -697,7 +699,7 @@ def end_current_activity():
         st.rerun() # Rerun to update the UI immediately
 
 
-st.title("Chat with Mariana 🤖")
+st.title("Chat with Sebastian 🤖")
 st.markdown("Your 22-year-old Mexicoan bro. Try an activity, or just chat!")
 
 activity_buttons_disabled = st.session_state.activity_in_progress is not None
@@ -753,7 +755,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Letter from the Future", help="Imagine writing a letter to your future self from 5 years ago, exploring past hopes and future realities.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "letter_from_the_future"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Jayden here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Sebastian here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Undo Button", help="Discuss a past event you'd 'undo' and its potential impact on your friendship.", disabled=activity_buttons_disabled):
@@ -839,7 +841,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("One-Minute Advice Column", help="Collaboratively give advice to a hypothetical person facing a problem.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "one_minute_advice_column"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Jayden, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Sebastian, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Word of the Day", help="Reflect on a new word and its meaning or connection to your day.", disabled=activity_buttons_disabled):
@@ -856,7 +858,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.rerun() # Rerun to apply disabled state immediately
     with col_mentor_medium:
         st.write("**5 XP**")
-        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Jayden would handle it.", disabled=activity_buttons_disabled):
+        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Sebastian would handle it.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "if_i_were_you"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "If I Were You... Okay, describe one moment from your day, bro. Anything. Then I'll tell you how I'd handle it if I were in your shoes."})
@@ -868,7 +870,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.session_state.messages.append({"role": "assistant", "content": "Burning Questions Jar! Time to get deep. Ask me anything, bro, something you've never dared to ask anyone. I'll answer with care, no cap."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
-        if st.button("Skill Swap Simulation", help="Roleplay teaching Jayden a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
+        if st.button("Skill Swap Simulation", help="Roleplay teaching Sebastian a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "skill_swap_simulation"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "Skill Swap Simulation! Okay, Sensei {st.session_state.username}, teach me a life skill. What should I learn today?"})
@@ -962,28 +964,28 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
 col1, col2 = st.columns([2, 1])
 
 with col2:
-    st.header("Mariana's Selfie")
+    st.header("Sebastian's Selfie")
     selfie_placeholder = st.empty()
     
     if "selfie_url" not in st.session_state:
-        st.session_state.selfie_url = persona_identity_images["jayden_lim"]
+        st.session_state.selfie_url = persona_identity_images["Sebastian_lim"]
     if "selfie_message_content" not in st.session_state:
-        st.session_state.selfie_message_content = "Mariana's default profile pic."
+        st.session_state.selfie_message_content = "Sebastian's default profile pic."
 
-    selfie_placeholder.image(st.session_state.selfie_url, caption="What Mariana's up to right now.")
+    selfie_placeholder.image(st.session_state.selfie_url, caption="What Sebastian's up to right now.")
 
     if st.button("Generate New Selfie", disabled=st.session_state.bot_is_typing):
         if st.session_state.messages:
-            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Jayden is chill.")
-            generate_persona_selfie_button_click("jayden_lim", last_bot_message)
-            selfie_placeholder.image(st.session_state.selfie_url, caption="What Mariana's up to right now.")
+            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Sebastian is chill.")
+            generate_persona_selfie_button_click("Sebastian_lim", last_bot_message)
+            selfie_placeholder.image(st.session_state.selfie_url, caption="What Sebastian's up to right now.")
         else:
             st.warning("Chat first to generate a selfie based on the conversation!")
     
     if st.button("Reset Selfie"):
-        st.session_state.selfie_url = persona_identity_images["jayden_lim"]
-        st.session_state.selfie_message_content = "Mariana's default profile pic."
-        selfie_placeholder.image(st.session_state.selfie_url, caption="Mariana's default profile pic.")
+        st.session_state.selfie_url = persona_identity_images["Sebastian_lim"]
+        st.session_state.selfie_message_content = "Sebastian's default profile pic."
+        selfie_placeholder.image(st.session_state.selfie_url, caption="Sebastian's default profile pic.")
         st.session_state.messages.append({"role": "assistant", "content": "Back to default, steady lah!"})
 
 
@@ -1017,7 +1019,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
         with col1:
             with st.chat_message("assistant"):
                 st.session_state.bot_is_typing = True # Set to True before generation starts
-                with st.spinner(f"Mariana is thinking about the {current_activity_name.replace('_', ' ')}..."):
+                with st.spinner(f"Sebastian is thinking about the {current_activity_name.replace('_', ' ')}..."):
                     response = run_crewai_activity_turn(
                         current_activity_name,
                         user_input=prompt,
@@ -1025,7 +1027,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                     )
                     st.markdown(response)
         cleaned_response = response
-        st.session_state.activity_conversation_history.append(f"Mariana: {cleaned_response}")
+        st.session_state.activity_conversation_history.append(f"Sebastian: {cleaned_response}")
         st.session_state.bot_is_typing = False # Set to False after response is done
 
     else:
