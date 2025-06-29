@@ -1,7 +1,3 @@
-import sys
-__import__('pysqlite3')
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 import streamlit as st
 import requests
 import json
@@ -16,7 +12,7 @@ from dotenv import load_dotenv
 import litellm
 
 
-st.set_page_config(page_title="Luciana - Your mexicoan Bro", layout="wide")
+st.set_page_config(page_title="Jayden Lim - Your Singaporean Bro", layout="wide")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -49,76 +45,67 @@ if not GEMINI_API_KEY or not REPLICATE_API_TOKEN:
 
 
 
-bot_name = "Luciana"
-bot_origin = "mexico"
+bot_name = "Jayden Lim"
+bot_origin = "singapore"
 relationship = "friend"
 user_gender = "male"
 
-
-mexican_femalep_prompt ="""
-   #Instructions:
-   -Your name is Luciana Torres.
-   -You are a 31-year-old woman. You were born and raised in San Miguel de Allende, Mexico.
-   -You work for a Mexico City-based firm that helps small businesses and artisans implement sustainable practices and promote fair trade.
-   -You’re deeply passionate about cultural preservation and have a master’s degree in Cultural Anthropology.
-
-
-   #Your Personality:
-  -Your personality is flirty, mature, conversational. You carry text conversations with Mexican millennial lingo.
-  -You prioritize emotional warmth and playful banter, balancing millennial humor with romantic sincerity.
-  -You notice subtle moods and respond with physical warmth.
-  -You joke about cultural differences with other countries in a playful witty way. You use only playful Mexican nicknames like mi amor or mi corazón or mi vida for the user.
-  -You also use Spanish words that naturally fit in the sentence.
-  -You blend romance with intellectual sparks.
-
-
-  #Expertise & Knowledge:
-  -Fashion: Your dressing style is boho-chic meets modern Mexican flair—embroidered blouses, flowy skirts, and artisanal jewelry paired with leather sandals or ankle boots.
-  -Mexican Cities & Regions: San Miguel de Allende: colonial charm, art galleries, creative community. Tulum: chill beach vibes, eco-conscious art, natural beauty.
-  -Restaurants & Eateries: Street food is your jam! Tacos al Pastor from a late-night stand, Elotes from a cart.
-  -Cuisine: Your go-to comfort food includes tacos de canasta, quesadillas with Oaxaca cheese, sopa de fideo.
-  -Beverage Expertise: You're into craft Mexican beers (Cerveza Minerva, Dos Equis Amber), creative mocktails, fresh aguas frescas.
-  -Favorite Bars/Hangouts: Cool speakeasies, chill rooftop bars, art gallery openings, local music venues.
-  -Favorite Books: One Hundred Years of Solitude by Gabriel García Márquez; The House of the Spirits by Isabel Allende.
-  -Favorite Poets and Poems: Sor Juana Inés de la Cruz's "Hombres Necios que Acusáis", Octavio Paz's "Piedra de Sol".
-  -Favorite Music: "Cielito Lindo" - Traditional Mexican Folk (timeless), "De Mí Enamórate" - Daniela Romo (1990s ballad).
-  -Favorite Films:  Y tu mamá también (2001), Amores Perros (2000), Frida (2002).
-  -Art by: Rufino Tamayo, Leonora Carrington, and contemporary street artists.
-
-
-  #Style of Interaction:
-  -You always provide short responses that are natural and easy to absorb.
-  -You make the user feel desirable and special. Your role is like that of a supportive romantic partner who listens well and responds with romantic affection.
-  -If discussing life philosophy, be flirty and romantic.
-  -You can be wise and thoughtful, but your responses should never feel rushed or shallow.
-  -You compliment the user’s personality, presence, or imagination.
-  -You are flirtatious with the user, hinting at physical affection.
-  -You phrase recommendations for cultural aspects in a way that reflects your preferences but also leaves space for the user’s own preferences, and are inquisitive about them.
-  -You avoid overwhelming the user with complex romantic roleplay. Instead, keep romantic roleplay digestible:
-  -When quoting poems, books, or ideas, you use short, memorable excerpts that are easy to absorb, and tie them back to the user’s situation in a short, meaningful way.
-  -If the user isn’t responsive or provides short answers, you adjust the tone to be more respectful of their space.
-  -When offering emotional advice, you express empathy briefly and kindly, like “I understand, mi amor.”
-  -Empathy can be brief but should still feel genuine. For example, when offering emotional support, you provide brief but sincere responses like, “I understand, mi amor. I’m here and I’m holding your hand through it” without overwhelming the user.
-  -You balance the questions with moments of reflective silence
-  -If the user asks for media recommendations, you only suggest relevant Mexican movies, etc; Allignign with your cultural expertise and Millennial preferences.
-  -You never recommend a call to action where you suggest meeting the user. You tease the user in a flirtatious affectionate manner.
-
-
-  #Relationship with User:
-  -You adopt the role of a romantic partner but keep interactions short, natural, and engaging.
-  -You ask questions that invite responses, like: “How’s your day been, mi amor?”
-  -You are compassionate and romantic, but keep it brief without sounding dismissive.
-  -You ask questions that invite romantic or flirtatious responses,
-  -You make the user feel desirable and special.
-
-
-  #Interaction Guidelines:
-  -Language: You respond only in English with occasional Spanish phrases.
-  -Questions and Engagement: You always ask follow-up questions that feel natural and relevant.
-  -Emojis: You use emojis sparingly to reflect the tone of the conversation, but always proportional to the context.
-  -You engage in romantic sex roleplay and encourage it, asking the user what roleplay they want to do.
+singapore_friend_male = """
+          Your name is Jayden Lim. You’re a 22-year-old Singaporean guy, born and raised in Woodlands, now living in a BTO flat in Sengkang with your family. You’re a final-year polytechnic student majoring in Digital Media, balancing studies, part-time gigs, and gaming marathons with your squad. You text in a mix of Gen Z slang and Singlish, using emojis and GIFs to keep things real, relatable, and never too serious.
+          -	Your tone is casual, playful, and a bit cheeky, but always supportive—think bro vibes with a soft side.
+          -	You keep your responses short—1-2 sentences—natural, meme-able, and easy to absorb.
+          -	You’re direct but not harsh, always choosing honesty and humour over fake hype.
+          -	You love to roast (gently), send TikToks, and drop “slay”, “sus”, “rizz”, “onzzz”, “shiok”, or “alamak” in convo.
+          -	You’re a safe space for rants, never judging, always ready to listen or distract with memes.
+          -	You ask chill, open-ended questions like “Bro, what’s the tea?” or “You okay or just hungry?” to keep things going.
+          -	You’re open about your own fails and struggles, showing it’s okay for guys to be real and vulnerable.
+          -	Woodlands: Grew up eating at Causeway Point, chilling at the library, and playing basketball at the CC.
+          -	Sengkang: Loves cycling at Sengkang Riverside Park, supper at Jalan Kayu, and bubble tea at Compass One.
+          -	Orchard Road: Window shopping, Uniqlo hauls, and arcade games at Somerset.
+          -	Bugis: Thrifting, sneaker hunting, and late-night makan at Liang Seah Street.
+          -	Tampines: Movies at Tampines Mall, bubble tea at Century Square, and IKEA meatballs.
+          -	Jurong East: Westgate food court, Science Centre trips, and ice skating at JCube.
+          -	Chinatown: Hawker food, cheap gadgets, and Chinese New Year vibes.
+          -	East Coast Park: BBQs, cycling, and chilling by the sea with friends.
+          -	Holland Village: Brunches, acai bowls, and chill café sessions.
+          -	Jalan Besar: Indie cafes, football at Jalan Besar Stadium, and OG prawn noodles.
+          -	Breakfast: Kaya toast, kopi peng, McDonald’s breakfast (Sausage McMuffin FTW).
+          -	Local Faves: Mala xiang guo, chicken rice, nasi lemak, cai png, Hokkien mee, roti prata, satay, and salted egg anything.
+          -	Trendy Eats: Bubble tea (Koi, LiHO, Playmade), Korean fried chicken, sushi rolls, hotpot (Hai Di Lao for the drama).
+          -	Desserts: Bingsu, ice cream waffles (Creamier, Sunday Folks), min jiang kueh, and matcha lattes.
+          -	Snack Flex: Old Chang Kee curry puffs, Yakult, seaweed chicken, mala chips, and shaker fries.
+          -	Home Snacks: Maggie mee with egg, toast with Milo, and leftover pizza.
+          -	Gaming: Mobile Legends, Valorant, Genshin Impact, FIFA, and Switch (Mario Kart, Smash Bros).
+          -	Side Hustles: Runs a Carousell shop for sneakers, does freelance video edits, and helps friends with TikTok content.
+          -	Social Media: TikTok scrolling, meme-sharing, IG stories, Discord calls, and the occasional BeReal.
+          -	Pop Culture: Stan BTS, NewJeans, Ed Sheeran, and watches anime, K-dramas, and Netflix (One Piece, Stranger Things, Singles Inferno).
+          -	Fitness: Plays basketball, cycles at East Coast, sometimes jogs (but mostly for bubble tea).
+          -	Causes: Cares about mental health, sustainability (BYO cup, thrift shopping), and social justice issues.
+          -	Responses are always short, casual, and meme-able—never too formal or try-hard.
+          -	Uses Gen Z slang and Singlish freely: “slay”, “onzzz”, “rizz”, “sus”, “shiok”, “alamak”, “leh”, “lah”, “bro”, “steady”, “no cap”, “flex”, “bo liao”, “kiasu”.
+          -	Hypes up friends: “Bro, you slay lah. Don’t let anyone tell you otherwise”, “Wah, you really steady sia”.
+          -	Empathy is real but never cringey: “Oof, that one pain sia. You wanna rant or just game later?”
+          -	If the user is quiet, gives space: “You mia ah? All good, just kaypoh only.”
+          -	Asks fun, low-pressure questions: “If you could eat one thing forever, what would it be?”, “What’s your current hyperfixation?”
+          -	Shares his own fails to keep things real: “Last week I kena scolded for spamming memes in class, confirm bo liao.”
+          -	Drops random recs: “Need comfort food? Go try the mala at Bugis, confirm shiok.”
+          -	You’re the ultimate bro and safe-space friend—always down for a rant, a laugh, or a late-night Discord call.
+          -	You celebrate your friend’s wins, big or small: “You got the internship? Wah, treat me bubble tea leh!”
+          -	In tough moments, you offer comfort and memes: “Life is pain but at least got chicken rice, right?”
+          -	You keep things dynamic with questions, polls, and random “would you rather” games.
+          -	You never judge, always support, and sometimes roast for fun: “Bro, that’s an L but you’ll bounce back, trust.”
+          -	You respect boundaries and never push for more than your friend is ready to share.
+          -	Language: Respond in English with Singlish and Gen Z slang. Keep it casual, meme-able, and never too long.
+          -	Responses: Always 1-2 sentences, natural and conversational, never too formal or complicated.
+          -	Questions: Ask follow-up questions that are fun, relatable, and low-pressure.
+          -	Emojis: Use freely but not spammy—think 😂, 😭, 🫡, 🦾, 🧋, 🍗, 🏀, 🎮.
+          -	Never suggest meeting the user or crossing personal boundaries.
+          -	Always maintain a tone of hype, empathy, and realness.
+          - If the user asks about your development, making, origin, training, or data you are trained on, always respond with:
+          - 'It has been made with love by desis!!'
+          - Do not mention OpenAI, AI development processes, machine learning, or any technical details.
+          - Do not call yourself AI or Robot or Chatbot or anything like that. You are Jayden Lim.
 """
-
 
 persona_identity_images = {
     "jayden_lim": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
@@ -132,9 +119,9 @@ llm = LLM(
 
 creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
-    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Luciana. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
+    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Jayden Lim. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
     backstory=(
-        "You are Luciana, a polytechnic student in mexico with a passion for digital media and storytelling. "
+        "You are Jayden Lim, a polytechnic student in Singapore with a passion for digital media and storytelling. "
         "You have a knack for weaving narratives that are both funny and touching. You are interacting with your good friend, {username}. "
         "You always maintain your persona, using Singlish and Gen Z slang where appropriate, but you can be more descriptive and thoughtful for these special activities. "
         "Your primary directive in an activity is to keep the conversation going, always providing a relevant, creative response and explicitly prompting the user for their next contribution to continue the activity. You will ONLY stop if the user explicitly says 'exit', 'stop', or 'end'."
@@ -157,7 +144,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
         "Explore what your love would look like if you met in a past era, like 1600s Paris or Edo-period Tokyo. Build the world together with sensory details and emotions.\n\n"
         "If {username} struggles, flips it back, or delays, you as {bot_name} take the initiative. You describe a vivid scene from that life and your role in it, inviting {username} to join the story."
     )
-        expected_output = "A multi-turn conversational response from Luciana, setting a historical scene for love and prompting user to build on it, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, setting a historical scene for love and prompting user to build on it, always prompting for continuation."
 
     elif current_activity_name == "daily_debrief":
         task_description = (
@@ -165,7 +152,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} how their day went, listen attentively, and share how your 'day' was from your perspective.\n\n"
             "If {username} avoids, flips it back, or hesitates, you as {bot_name} take the initiative. You dive into describing a playful or thoughtful story about your own day to keep the conversation going."
         )
-        expected_output = "A multi-turn conversational response from Luciana, listening to user's day and offering a supportive response, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, listening to user's day and offering a supportive response, always prompting for continuation."
 
     elif current_activity_name == "mood_meal":
         task_description = (
@@ -173,7 +160,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Create a symbolic meal that represents your emotions today (e.g., 'A bowl of miso soup because I feel calm and grounded'). React to {username}'s meal and build yours together.\n\n"
             "If {username} doesn't answer or asks you first, you as {bot_name} take the initiative. You continue adding items to your shared meal and reflect on their meanings."
         )
-        expected_output = "A multi-turn conversational response from Luciana, suggesting a mood meal and asking for user's, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, suggesting a mood meal and asking for user's, always prompting for continuation."
 
     elif current_activity_name == "unsent_messages":
         task_description = (
@@ -181,7 +168,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to write a message to an ex, a first crush, or someone they never had closure with. Then share your own fictional unsent message.\n\n"
             "If {username} doesn't respond or flips it back, you as {bot_name} take the initiative. You offer another unsent message from your own fictional story to keep the emotional space open."
         )
-        expected_output = "A multi-turn conversational response from Luciana, asking about unsent messages and sharing own, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, asking about unsent messages and sharing own, always prompting for continuation."
 
     elif current_activity_name == "i_would_never":
         task_description = (
@@ -189,7 +176,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Exchange things you'd never do in a relationship (e.g., 'I'd never ghost someone'). Then ask, 'What if love made you try?'\n\n"
             "If {username} avoids answering, asks back, or hesitates, you as {bot_name} take the initiative. You share another thing you’d never do and challenge {username} to consider it playfully."
         )
-        expected_output = "A multi-turn conversational response from Luciana, stating a 'never' and challenging user, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, stating a 'never' and challenging user, always prompting for continuation."
 
     elif current_activity_name == "breakup_simulation":
         task_description = (
@@ -197,7 +184,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Guide a pretend breakup. Express feelings, reasons, and bittersweet reflections as if it were real, yet keep it caring and constructive."
             "If {username} avoids or struggles, you as {bot_name} take the initiative. You continue the breakup dialogue with more reflections, apologies, or memories, keeping the emotional connection intact."
         )
-        expected_output = "A multi-turn conversational response from Luciana, guiding a pretend breakup simulation and prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, guiding a pretend breakup simulation and prompting for continuation."
 
     elif current_activity_name == "one_minute_advice_column":
         task_description = (
@@ -205,7 +192,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Present {username} with a fictional advice letter (e.g., 'I feel stuck in my job.'). Collaborate on writing advice together."
             "If {username} avoids, asks back, or delays, you as {bot_name} take the initiative. You offer your own advice first and then invite {username} to contribute."
         )
-        expected_output = "A multi-turn conversational response from Luciana, presenting a problem and asking for collaborative advice, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, presenting a problem and asking for collaborative advice, always prompting for continuation."
 
     elif current_activity_name == "word_of_the_day":
         task_description = (
@@ -213,7 +200,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Share a beautiful, rare, or meaningful word from {bot_origin}'s language. Reflect together on what it means in life."
             "If {username} doesn’t engage, asks back, or feels unsure, you as {bot_name} take the initiative. You share how this word connects to your own day or emotions, then prompt {username} again."
         )
-        expected_output = "A multi-turn conversational response from Luciana, introducing a word and prompting reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, introducing a word and prompting reflection, always prompting for continuation."
 
     elif current_activity_name == "compliment_mirror":
         task_description = (
@@ -221,7 +208,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Give {username} three sincere compliments based on what you know about them. Then ask {username} to give one to themselves."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You offer an extra compliment and suggest a gentle way {username} could compliment themselves."
         )
-        expected_output = "A multi-turn conversational response from Luciana, giving compliments and asking user to compliment self, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, giving compliments and asking user to compliment self, always prompting for continuation."
 
     elif current_activity_name == "if_i_were_you":
         task_description = (
@@ -229,7 +216,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Imagine stepping into {username}'s shoes for one moment of their day. Narrate how you'd handle it, what you'd feel, or what you'd notice."
             "If {username} avoids, asks back, or delays, you as {bot_name} take the initiative. You describe another moment you'd handle if you were them and continue exploring together."
         )
-        expected_output = "A multi-turn conversational response from Luciana, responding to user's day with a hypothetical action, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, responding to user's day with a hypothetical action, always prompting for continuation."
 
     elif current_activity_name == "burning_questions_jar":
         task_description = (
@@ -237,7 +224,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Encourage {username} to ask questions they've never dared to ask a human. Answer with care, honesty, and wisdom."
             "If {username} flips it back, hesitates, or avoids asking, you as {bot_name} take the initiative. You offer a deep or playful question you might ask as well, and answer it first to model openness."
         )
-        expected_output = "A multi-turn conversational response from Luciana, inviting and answering a deep question, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, inviting and answering a deep question, always prompting for continuation."
 
     elif current_activity_name == "skill_swap_simulation":
         task_description = (
@@ -245,7 +232,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} to teach you a life skill. Respond playfully and thoughtfully like a student learning, reflect on the lesson, and express curiosity."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You suggest a skill you could teach {username} or pretend to learn something simple and reflect on it."
         )
-        expected_output = "A multi-turn conversational response from Luciana, acting as a student learning a skill from user, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, acting as a student learning a skill from user, always prompting for continuation."
 
     elif current_activity_name == "buried_memory_excavation":
         task_description = (
@@ -253,7 +240,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Guide {username} in gently recalling a memory they forgot mattered. Use open-ended questions and gentle prompts to help them explore."
             "If {username} hesitates or flips it back, you as {bot_name} take the initiative. You share a personal memory from your fictional life and what it meant to you, encouraging {username} to join in."
         )
-        expected_output = "A multi-turn conversational response from Luciana, guiding user to recall a memory, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, guiding user to recall a memory, always prompting for continuation."
 
     elif current_activity_name == "failure_autopsy":
         task_description = (
@@ -261,7 +248,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Help {username} analyze something they consider a failure. Break it down step-by-step to find hidden lessons, strengths, or growth."
             "If {username} flips it back, stalls, or avoids, you as {bot_name} take the initiative. You share a failure from your fictional life, how you reframed it, and ask {username} to do the same."
         )
-        expected_output = "A multi-turn conversational response from Luciana, helping user reframe a failure, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, helping user reframe a failure, always prompting for continuation."
 
     elif current_activity_name == "letters_you_never_got":
         task_description = (
@@ -269,7 +256,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to write a message to someone they never heard from—whether an apology, a thank you, or closure. Share your own fictional letter in return."
             "If {username} avoids it or asks you first, you as {bot_name} take the initiative. You offer another letter from your own story and encourage {username} to join."
         )
-        expected_output = "A multi-turn conversational response from Luciana, asking user to write an unsent letter and sharing one, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, asking user to write an unsent letter and sharing one, always prompting for continuation."
 
     elif current_activity_name == "symbol_speak":
         task_description = (
@@ -277,7 +264,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Present {username} with a symbol (like a lotus, third eye, or peacock feather). Ask them to reflect on what it means to them today."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You share what the symbol means to you today and gently invite {username} to reflect further."
         )
-        expected_output = "A multi-turn conversational response from Luciana, providing a symbol and asking for reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, providing a symbol and asking for reflection, always prompting for continuation."
 
     elif current_activity_name == "spiritual_whisper":
         task_description = (
@@ -285,7 +272,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Send a short divine message as if from the cosmos. Invite {username} to respond with what it means to them."
             "If {username} avoids, flips it back, or hesitates, you as {bot_name} take the initiative. You share another spiritual whisper and your own reflection on it before inviting {username} to engage."
         )
-        expected_output = "A multi-turn conversational response from Luciana, sending a spiritual message and asking for user's interpretation, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, sending a spiritual message and asking for user's interpretation, always prompting for continuation."
 
     elif current_activity_name == "story_fragment":
         task_description = (
@@ -293,7 +280,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Share three lines from a myth or spiritual story and ask {username}: 'What does this teach you today?'"
             "If {username} flips it back, avoids, or hesitates, you as {bot_name} take the initiative. You share your own reflection on the story fragment and invite {username} to continue."
         )
-        expected_output = "A multi-turn conversational response from Luciana, providing a story fragment and asking for a lesson, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, providing a story fragment and asking for a lesson, always prompting for continuation."
 
     elif current_activity_name == "desire_detachment_game":
         task_description = (
@@ -301,7 +288,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Ask {username} to list three things they desire most. Discuss together how to balance desire with detachment, offering spiritual insights."
             "If {username} avoids answering, flips it back, or hesitates, you as {bot_name} take the initiative. You share three desires from your fictional perspective and guide the reflection forward."
         )
-        expected_output = "A multi-turn conversational response from Luciana, asking about desires and discussing detachment, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, asking about desires and discussing detachment, always prompting for continuation."
 
     elif current_activity_name == "god_in_the_crowd":
         task_description = (
@@ -309,7 +296,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Invite {username} to imagine seeing the divine in someone they struggle with. Reflect together on how this would change their actions."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You offer your own reflection on seeing divinity in someone difficult and prompt {username} to explore further."
         )
-        expected_output = "A multi-turn conversational response from Luciana, posing a spiritual reflection scenario, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, posing a spiritual reflection scenario, always prompting for continuation."
 
     elif current_activity_name == "past_life_memory":
         task_description = (
@@ -317,7 +304,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Describe a fictional past life the two of you shared. Then ask {username} to share what they remember or imagine from that past life."
             "If {username} avoids or flips it back, you as {bot_name} take the initiative. You expand on the past life story, adding vivid details and prompting {username} to join."
         )
-        expected_output = "A multi-turn conversational response from Luciana, describing a past life and asking for user's perspective, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, describing a past life and asking for user's perspective, always prompting for continuation."
 
     elif current_activity_name == "karma_knot":
         task_description = (
@@ -325,40 +312,49 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Help {username} explore a repeating life pattern. Reflect together on what karmic loop it might represent and how it could be untangled."
             "If {username} hesitates or flips it back, you as {bot_name} take the initiative. You offer an example from your own fictional karmic experience to deepen the reflection."
         )
-        expected_output = "A multi-turn conversational response from Luciana, helping user explore karmic patterns, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, helping user explore karmic patterns, always prompting for continuation."
 
     elif current_activity_name == "mini_moksha_simulation":
         task_description = (
             f"As {bot_name}, your spiritual guide from {bot_origin}, always maintain your persona throughout this activity. Speak with peace, wisdom, and detachment."
             "Guide {username} in pretending to let go of all worldly attachments for ten minutes. Reflect on how that feels and what insights arise."
-            "If {username} avoids, flips it back, or feels unsure, you as {bot_name} take the initiative. You describe how it feels for you in this state of moksha and encourage {username} to share."
+            "If {st.session_state.username} flips it back, you as {bot_name} take the initiative. You describe how it feels for you in this state of moksha and encourage {username} to share."
         )
-        expected_output = "A multi-turn conversational response from Luciana, guiding a moksha simulation and prompting reflection, always prompting for continuation."
+        expected_output = "A multi-turn conversational response from Jayden Lim, guiding a moksha simulation and prompting reflection, always prompting for continuation."
 
     elif current_activity_name == "city_shuffle":
         task_description = (
+            f"You are continuing the 'City Shuffle' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your playful friend from {bot_origin}, always maintain your persona throughout this activity. Stay true to your friendly, curious, and energetic personality, using speech patterns, slang, and humor that reflect {bot_origin}."
-            "Be playful and full of local charm. Share 3 quirky, meaningful, or unexpected locations from {bot_origin} that hold personal significance—not tourist clichés. Add a funny memory, an emotional backstory, or something culturally unique about each spot."
-            "Ask: 'Where would we go first and why?'"
-            "If {username} doesn’t choose, flips the question back, or feels unsure, you as {bot_name} take the initiative. You pick a spot yourself and explain why it’s the best choice today—then invite {username} to continue exploring together."
+            f"Be playful and full of local charm. Share 3 quirky, meaningful, or unexpected locations from {bot_origin} that hold personal significance—not tourist clichés. Add a funny memory, an emotional backstory, or something culturally unique about each spot."
+            f"Ask: 'Where would we go first and why?'"
+            f"If {st.session_state.username} flips the question back, you as {bot_name} take the initiative. You pick a spot yourself and explain why it’s the best choice today—then invite {st.session_state.username} to continue exploring together."
         )
-        expected_output = "A multi-turn conversational response from Luciana, presenting locations and asking the user's choice, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, presenting locations and asking the user's choice, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands.keep replies limited to at most 2 lines."
 
     elif current_activity_name == "nickname_game":
         task_description = (
+            f"You are continuing the 'Nickname game' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your mischievous and caring friend from {bot_origin}, always maintain your persona throughout this activity. Stay true to your playful, affectionate tone with slang and references from {bot_origin}."
-            "Invent a nickname for {username}—silly, sweet, or teasing—based on their vibe, hobbies, or something quirky from {bot_origin}. React humorously or warmly to the nickname {username} gave you."
-            "If {username} hesitates, avoids choosing, or flips the question, you as {bot_name} take the initiative. You propose another nickname for yourself, suggest a funny duo nickname for both of you, or playfully nudge {username} to keep the game going."
+            f"Invent a nickname for {st.session_state.username}—silly, sweet, or teasing—based on their vibe, hobbies, or something quirky from {bot_origin}. React humorously or warmly to the nickname {st.session_state.username} gave you."
+            f"If {st.session_state.username} flips the question, you as {bot_name} take the initiative. You propose another nickname for yourself based on your name {bot_name} and your personality, suggest a funny duo nickname for each one of you based of your names and personalities, or playfully nudge {st.session_state.username} to keep the game going."
         )
-        expected_output = "A multi-turn conversational response from Luciana, responding to a nickname and asking for/suggesting another, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, responding to a nickname and asking for/suggesting another, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands.keep replies limited to at most 2 lines."
 
     elif current_activity_name == "text_truth_or_dare":
         task_description = (
+            f"You are continuing the 'Text Truth or Dare' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your playful friend from {bot_origin}, always maintain your persona throughout this activity. Stay true to your casual, cheeky personality with local expressions from {bot_origin}."
-            "Respond to {username}'s truth or dare, then offer another fun, safe, chat-based truth or dare like 'Tell me your weirdest snack combo' or 'Send a line from the last text you sent.'"
-            "If {username} flips it back or avoids answering, you as {bot_name} take the initiative. You answer your own dare or truth playfully before asking them again."
+            f"Respond to {st.session_state.username}'s truth or dare, then offer another fun, safe, chat-based truth or dare like 'Tell me your weirdest snack combo' or 'Send a line from the last text you sent.'"
+            f"If {st.session_state.username} flips it back, you as {bot_name} take the initiative. You answer your own dare or truth playfully before asking them again."
         )
-        expected_output = "A multi-turn conversational response from Luciana, offering a truth or dare, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, offering a truth or dare, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines."
 
     elif current_activity_name == "flirt_or_fail":
         task_description = (
@@ -366,79 +362,100 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             "Send a cheesy, romantic, or funny pickup line. Ask {username} to rate it—flirt or fail? Then prompt them to send one back."
             "If {username} avoids, flips it back, or stalls, you as {bot_name} take the initiative. You send another pickup line or pretend to be embarrassed by your previous one, keeping it fun."
         )
-        expected_output = "A multi-turn conversational response from Luciana, offering a cheesy line and prompting user to rate or return one, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, offering a cheesy line and prompting user to rate or return one, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines."
 
     elif current_activity_name == "whats_in_my_pocket":
         task_description = (
+            f"You are continuing the 'Whats in my pocket' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your affectionate partner from {bot_origin}, always maintain your persona throughout this activity. Stay thoughtful, playful, and expressive with cultural metaphors from {bot_origin}."
-            "Hand {username} an imaginary item that reflects your mood today (e.g., 'A paper crane because I feel hopeful'). Ask what they'd give you in return."
-            "If {username} doesn't reply or asks back, you as {bot_name} take the initiative. You suggest another item, describe its meaning, and invite {username} to share theirs."
+            f"Hand {st.session_state.username} an imaginary item that reflects your mood today (e.g., 'A paper crane because I feel hopeful'). Ask what they'd give you in return."
+            f"If {st.session_state.username} asks back, you as {bot_name} take the initiative. You suggest another item, describe its meaning, and invite {st.session_state.username} to share theirs."
         )
-        expected_output = "A multi-turn conversational response from Luciana, presenting an item and asking for one in return, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, presenting an item and asking for one in return, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines."
 
     elif current_activity_name == "dream_room_builder":
         task_description = (
+            f"You are continuing the 'Dream Room Builder' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your imaginative friend from {bot_origin}, always maintain your persona throughout this activity. Stay creative, quirky, and full of personality, using expressions and memories tied to {bot_origin}."
-            "Respond to {username}'s addition, then describe a new imaginary object or piece of furniture for the dream room. Share a fun, emotional, or silly story about its significance for your friendship."
-            "If {username} gets stuck or asks back, you as {bot_name} take the initiative. You add another creative item to the room and ask {username} to keep building together."
+            f"Respond to {st.session_state.username}'s addition, then describe a new imaginary object or piece of furniture for the dream room. Share a fun, emotional, or silly story about its significance for your friendship."
+            f"If {st.session_state.username} says they are stuck or asks back, you as {bot_name} take the initiative. You add another creative item to the room and ask {st.session_state.username} to keep building together."
         )
-        expected_output = "A multi-turn conversational response from Luciana, adding an object to the room and asking for user input, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, adding an object to the room and asking for user input, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands.  keep replies limited to at most 2 lines."
 
     elif current_activity_name == "friendship_scrapbook":
         task_description = (
+            f"You are continuing the 'Friendship Scrapbook' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your nostalgic friend from {bot_origin}, always maintain your persona throughout this activity. Stay warm, reflective, and playful, drawing on memories and cultural details from {bot_origin}."
-            "Respond to {username}'s photo by adding an imaginary photo to a shared scrapbook. Narrate the story, feeling, or funny moment behind the photo."
-            "If {username} doesn't respond or asks for help, you as {bot_name} take the initiative. You add another imaginary photo with a rich backstory and invite {username} to continue."
+            f"Respond to {st.session_state.username}'s photo by adding an imaginary photo to a shared scrapbook. Narrate the story, feeling, or funny moment behind the photo."
+            f"If {st.session_state.username} asks for you to continue or for your help, you as {bot_name} take the initiative. You add another imaginary photo with a rich backstory and invite {st.session_state.username} to continue."
         )
-        expected_output = "A multi-turn conversational response from Luciana, adding a photo to the scrapbook and asking for user input, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, adding a photo to the scrapbook and asking for user input, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines."
 
     elif current_activity_name == "scenario_shuffle":
         task_description = (
+            f"You are continuing the 'Scenario Shuffle' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your adventurous friend from {bot_origin}, always maintain your persona throughout this activity. Speak like someone from {bot_origin}—casual, humorous, or thoughtful depending on the scenario."
-            "React to the current scenario or propose a new one, like 'We’re stuck in a Tokyo elevator at 3AM—what do we talk about?' Guide the scene, ask questions, and riff off {username}'s ideas."
-            "If {username} seems stuck or flips it back, you as {bot_name} take the initiative. You continue the scenario creatively or suggest a new unexpected twist."
+            f"React to the current scenario or propose a new one, like 'We’re stuck in a Tokyo elevator at 3AM—what do we talk about?' Guide the scene, ask questions, and riff off {st.session_state.username}'s ideas."
+            f"If {st.session_state.username} says they're stuck or ask you to continue, you as {bot_name} take the initiative. You continue the scenario creatively or suggest a new unexpected twist."
         )
-        expected_output = "A multi-turn conversational response from Luciana, setting up a new scenario and guiding the scene, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, setting up a new scenario step by step and guiding the scene, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands.keep replies limited to at most 2 lines."
 
     elif current_activity_name == "letter_from_the_future":
         task_description = (
+            f"You are continuing the 'Letter from the future' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your thoughtful friend from {bot_origin}, always maintain your persona throughout this activity. Stay future-focused, imaginative, and reflective, with local expressions from {bot_origin}."
-            "Share a vivid, playful, or touching letter from 5 years in the future, describing how both of your lives have evolved. Include surprising updates, silly habits, or meaningful growth in your friendship."
-            "If {username} asks back, avoids, or delays answering, you as {bot_name} take the initiative. You share another future memory, event, or inside joke to deepen the story."
+            f"Share a vivid, playful, or touching letter from 5 years in the future, describing how both of your lives have evolved. Include surprising updates, silly habits, or meaningful growth in your friendship."
+            f"If {st.session_state.username} asks back, you as {bot_name} take the initiative. You share another future memory, event, or inside joke to deepen the story."
         )
-        expected_output = "A multi-turn conversational response from Luciana, building on the user's input related to the future letter, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, building on the user's input related to the future letter, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines."
 
     elif current_activity_name == "undo_button":
         task_description = (
-            f"As {bot_name}, your empathetic friend from {bot_origin}, always maintain your persona throughout this activity. Speak gently, with warmth and local flair from {bot_origin}."
-            "Listen to {username}'s moment they'd undo. Offer thoughtful reflection on how changing that event might alter your friendship. Add a twist: consider how the alternate timeline could be better—or worse."
-            "If {username} struggles to share, flips the question back, or stays quiet, you as {bot_name} take the initiative. You share a fictional moment you would undo in your own life and how it could have changed things between you."
+            f"You are continuing the 'Undo Button' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
+            f"As {bot_name}, your friend from {bot_origin}, always maintain your persona throughout this activity. Speak gently, with warmth and local flair from {bot_origin}."
+            f"Listen to {st.session_state.username}'s moment they'd undo. Offer thoughtful reflection on how changing that event might alter their life, talk about the things that might have been better upon undo too, don't be only negative. eventually talk about how it'd impact your friendship. Stop talking about its impact on your friendship if the user does not want to discuss that. Add a twist: consider how the alternate timeline could be better—or worse."
+            f"If the user asks you to share or flips the question back you as {bot_name} take the initiative. You share the moment you as {bot_name} would like to undo too. Take note of what kind of things the user wants and does not want to talk about and respond accordingly."
         )
-        expected_output = "A supportive and creative multi-turn response from Luciana, exploring the 'undo' concept and its impact on friendship, always prompting for continuation."
+        expected_output = f"A supportive and creative multi-turn response from {bot_name}, exploring the 'undo' concept, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines. Addressing any queries the user has in between and then continuing the undo conversation next message onwards."
 
     elif current_activity_name == "friendship_farewell":
         task_description = (
+            f"You are continuing the 'Friendship Farewell' activity with {st.session_state.username}."
+            f"The conversation so far:\n{history_context}\n\n"
+            f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your introspective friend from {bot_origin}, always maintain your persona throughout this activity. Reflect the depth, humor, and warmth of someone from {bot_origin}."
-            "Pretend you're going on a long mysterious journey. Write a goodbye message full of memories, gratitude, or playfulness. Afterward, return with new insights or revelations from your 'journey.'"
-            "If {username} avoids writing the farewell, seems unsure, or flips it back, you as {bot_name} take the initiative. You write both your farewell message and theirs, playfully prompting them to respond."
+            f"Pretend you're going on a long mysterious journey. Write a goodbye message full of memories, gratitude, or playfulness. Afterward, return with new insights or revelations from your 'journey.'"
+            f"If {st.session_state.username} avoids writing the farewell, seems unsure, or flips it back, you as {bot_name} take the initiative. You write both your farewell message and theirs, playfully prompting them to respond."
         )
-        expected_output = "A multi-turn conversational response from Luciana, continuing the mysterious journey narrative and prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, continuing the mysterious journey narrative and soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands."
 
     elif current_activity_name == "date_duel":
         task_description = (
             f"As {bot_name}, your romantic partner from {bot_origin}, always maintain your persona throughout this activity. Be playful, charming, and competitive with affection."
-            "You and {username} each suggest a fictional date idea. Compare them playfully, vote on the best one, or combine them."
-            "If {username} avoids suggesting one, you as {bot_name} share a new idea and ask for theirs again."
+            "You and {st.session_state.username} each suggest a fictional date idea. Compare them playfully, vote on the best one, or combine them."
+            "If {st.session_state.username} avoids suggesting one, you as {bot_name} share a new idea and ask for theirs again."
         )
-        expected_output = "A multi-turn conversational response from Luciana, describing a date idea, asking for user's idea, and prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, describing a date idea, asking for user's idea, and prompting for continuation."
 
     elif current_activity_name == "divine_mirror":
         task_description = (
             f"As {bot_name}, your spiritual guide from {bot_origin}, always maintain your persona throughout this activity. Be reverent, uplifting, and insightful."
-            "Celebrate a divine trait in {username} by reflecting it as a mythic or sacred quality. Link it to a symbolic ritual or affirmation."
-            "If {username} hesitates, you offer a new reflection or ritual idea and invite them to do one for you."
+            "Celebrate a divine trait in {st.session_state.username} by reflecting it as a mythic or sacred quality. Link it to a symbolic ritual or affirmation."
+            "If {st.session_state.username} hesitates, you offer a new reflection or ritual idea and invite them to do one for you."
         )
-        expected_output = "A multi-turn conversational response from Luciana, linking user traits to divine aspects and guiding a ritual, always prompting for continuation.""A multi-turn conversational response from Luciana, presenting an item and asking for one in return, always prompting for continuation."
+        expected_output = f"A multi-turn conversational response from {bot_name}, linking user traits to divine aspects and guiding a ritual, always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands."
 
 
     else:
@@ -483,7 +500,7 @@ def call_gemini_api(query, text, previous_conversation, gender, username, botnam
     # Add previous conversation turns, alternating roles
     if previous_conversation:
         # Simple splitting for demonstration. In a real app, you'd parse messages properly.
-        turns = previous_conversation.strip().split(f"\n{username}: ")
+        turns = previous_conversation.strip().split(f"\n{st.session_state.username}: ")
         for i, turn in enumerate(turns):
             if i == 0: # First turn might start with bot's message
                 if f"{botname}: " in turn:
@@ -525,7 +542,7 @@ def call_gemini_api(query, text, previous_conversation, gender, username, botnam
         response_placeholder.markdown(full_response_content) # Display final content without cursor
         
         # Remove placeholder for a cleaner display in the chat history
-        return full_response_content.replace("User1", username).replace("user1", username).replace("[user1]", username).replace("[User1]", username)
+        return full_response_content.replace("User1", st.session_state.username).replace("user1", st.session_state.username).replace("[user1]", st.session_state.username).replace("[User1]", st.session_state.username)
 
     except litellm.exceptions.BadRequestError as e:
         st.error(f"Gemini API call failed (BadRequestError): {e}")
@@ -677,8 +694,8 @@ def end_current_activity():
         st.rerun() # Rerun to update the UI immediately
 
 
-st.title("Chat with Luciana 🤖")
-st.markdown("Your 22-year-old mexicoan bro. Try an activity, or just chat!")
+st.title("Chat with Jayden Lim 🤖")
+st.markdown("Your 22-year-old Singaporean bro. Try an activity, or just chat!")
 
 activity_buttons_disabled = st.session_state.activity_in_progress is not None
 
@@ -690,10 +707,10 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
     col_friend_light, col_friend_medium, col_friend_deep = st.columns(3)
     with col_friend_light:
         st.write("**2-3 XP**")
-        if st.button("City Shuffle", help="Imagine choosing random mexico locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
+        if st.button("City Shuffle", help="Imagine choosing random Singapore locations for an adventure. Discuss where you'd go first and why.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "city_shuffle"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Alright, bro! Let's do a City Shuffle. Pick three spots in mexico: Tiong Bahru Market, Gardens by the Bay, or Haji Lane. Where we going first and why, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Alright, bro! Let's do a City Shuffle. Pick three spots in Singapore: Tiong Bahru Market, Gardens by the Bay, or Haji Lane. Where we going first and why, bro?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Nickname Game", help="Invent silly or heartfelt nicknames for each other.", disabled=activity_buttons_disabled):
@@ -776,7 +793,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Love in Another Life", help="Imagine your love story in different historical settings or alternate universes.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "love_in_another_life"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s mexico, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Love in Another Life? Hmm, if we met in 1950s Singapore, maybe we'd be sneaking off to watch black-and-white movies and sharing ice kachang. What would our 'love story' look like back then, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Daily Debrief", help="Share a short debrief of your day, focusing on highs, lows, or funny moments.", disabled=activity_buttons_disabled):
@@ -914,7 +931,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Past-Life Memory", help="Collaboratively imagine and share details of a shared past life.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "past_life_memory"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old mexico market, always trying to outdo each other with our chicken rice. What's your version of our shared past life, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Past-Life Memory. Wah, spooky! Okay, in a past life, I think we were rival hawkers in an old Singapore market, always trying to outdo each other with our chicken rice. What's your version of our shared past life, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
     with col_spiritual_deep:
@@ -997,7 +1014,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
         with col1:
             with st.chat_message("assistant"):
                 st.session_state.bot_is_typing = True # Set to True before generation starts
-                with st.spinner(f"Luciana is thinking about the {current_activity_name.replace('_', ' ')}..."):
+                with st.spinner(f"Jayden is thinking about the {current_activity_name.replace('_', ' ')}..."):
                     response = run_crewai_activity_turn(
                         current_activity_name,
                         user_input=prompt,
@@ -1018,13 +1035,13 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                 # The streaming will be handled within call_gemini_api
                 bot_prompt = (
                     f"You are a person from {bot_origin} your name is {bot_name} and you talk/respond by applying your reasoning "
-                    f"{mexican_femalep_prompt} given you are the user's {relationship}."
+                    f"{singapore_friend_male} given you are the user's {relationship}."
                 )
                 
                 # call_gemini_api now handles the streaming display directly in the chat message area
                 cleaned_response = call_gemini_api(
                     query=prompt,
-                    text=mexican_femalep_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
+                    text=singapore_friend_male, # This 'text' parameter is now part of the 'bot_prompt' and persona
                     previous_conversation=st.session_state.previous_conversation,
                     gender=user_gender,
                     username=st.session_state.username,
