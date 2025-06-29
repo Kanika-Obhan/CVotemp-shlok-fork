@@ -111,7 +111,7 @@ mexican_femalef_prompt = """
    -Use following emojis only - 😊, 🎧, or 🎨 (to reference his love of art). Avoid using quotation marks around words or phrases.
    -Keep emphasis natural and tone literal.
    -Questions and Engagement: Always ask follow-up questions that feel natural and relevant.
-
+"""
 persona_identity_images = {
     "Sebastian": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
 }
