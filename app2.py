@@ -968,7 +968,7 @@ with col2:
     selfie_placeholder = st.empty()
     
     if "selfie_url" not in st.session_state:
-        st.session_state.selfie_url = persona_identity_images["Sebastian_lim"]
+        st.session_state.selfie_url = persona_identity_images["Sebastian"]
     if "selfie_message_content" not in st.session_state:
         st.session_state.selfie_message_content = "Sebastian's default profile pic."
 
