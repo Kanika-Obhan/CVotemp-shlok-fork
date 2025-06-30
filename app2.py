@@ -1132,13 +1132,13 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                 # The streaming will be handled within call_gemini_api
                 bot_prompt = (
                     f"You are a person from {bot_origin} your name is {bot_name} and you talk/respond by applying your reasoning "
-                    f"{mexican_femalef_prompt} given you are the user's {relationship}."
+                    f"{mexican_femalep_prompt} given you are the user's {relationship}."
                 )
                 
                 # call_gemini_api now handles the streaming display directly in the chat message area
                 cleaned_response = call_gemini_api(
                     query=prompt,
-                    text=mexican_femalef_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
+                    text=mexican_femalep_prompt, # This 'text' parameter is now part of the 'bot_prompt' and persona
                     previous_conversation=st.session_state.previous_conversation,
                     gender=user_gender,
                     username=st.session_state.username,
