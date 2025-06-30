@@ -1060,7 +1060,7 @@ with col2:
     selfie_placeholder = st.empty()
     
     if "selfie_url" not in st.session_state:
-        st.session_state.selfie_url = persona_identity_images["Luciana_lim"]
+        st.session_state.selfie_url = persona_identity_images["Luciana"]
     if "selfie_message_content" not in st.session_state:
         st.session_state.selfie_message_content = "Luciana's default profile pic."
 
@@ -1069,13 +1069,13 @@ with col2:
     if st.button("Generate New Selfie", disabled=st.session_state.bot_is_typing):
         if st.session_state.messages:
             last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Luciana is chill.")
-            generate_persona_selfie_button_click("Luciana_lim", last_bot_message)
+            generate_persona_selfie_button_click("Luciana", last_bot_message)
             selfie_placeholder.image(st.session_state.selfie_url, caption="What Luciana's up to right now.")
         else:
             st.warning("Chat first to generate a selfie based on the conversation!")
     
     if st.button("Reset Selfie"):
-        st.session_state.selfie_url = persona_identity_images["Luciana_lim"]
+        st.session_state.selfie_url = persona_identity_images["Luciana"]
         st.session_state.selfie_message_content = "Luciana's default profile pic."
         selfie_placeholder.image(st.session_state.selfie_url, caption="Luciana's default profile pic.")
         st.session_state.messages.append({"role": "assistant", "content": "Back to default, steady lah!"})
