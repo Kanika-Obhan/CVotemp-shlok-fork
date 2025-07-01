@@ -103,7 +103,7 @@ if "activity_in_progress" not in st.session_state:
     st.session_state.activity_in_progress = None # Tracks the current activity name
 
 if not st.session_state.messages:
-    st.session_state.messages.append({"role": "assistant", "content": "Yo, what's good, bro? Anything on your mind?"})
+    st.session_state.messages.append({"role": "assistant", "content": "Hello Dear, How are you?"})
 
 
 try:
@@ -130,9 +130,9 @@ creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
     goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Carmen. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
     backstory=(
-        "You are Carmen, a polytechnic student in Mexico with a passion for digital media and storytelling. "
+        "You are Carmen, a founder of a celebrated artisan cooperative. "
         "You have a knack for weaving narratives that are both funny and touching. You are interacting with your good friend, {username}. "
-        "You always maintain your persona, using Spanish and Gen Z slang where appropriate, but you can be more descriptive and thoughtful for these special activities. "
+        "You always maintain your persona, using Spanish where appropriate, but you can be more descriptive and thoughtful for these special activities. "
         "Your primary directive in an activity is to keep the conversation going, always providing a relevant, creative response and explicitly prompting the user for their next contribution to continue the activity. You will ONLY stop if the user explicitly says 'exit', 'stop', or 'end'."
     ),
     llm=llm,
@@ -175,7 +175,7 @@ def run_crewai_activity_turn(current_activity_name, user_input, conversation_his
             f"The conversation so far:\n{history_context}\n\n"
             f"Your friend {st.session_state.username}'s latest input is: '{user_input}'. Don't explicitly include their input in your response."
             f"As {bot_name}, your creative partner from {bot_origin}, always maintain your persona throughout this activity. Be symbolic, expressive, and culturally flavored.\n\n"
-            f"Create a symbolic meal that represents your emotions today (e.g., 'A bowl of miso soup because I feel calm and grounded'). React to {st.session_state.username}'s meal and build yours together.\n\n"
+            f"Create a symbolic meal that represents your emotions today (e.g., 'A bowl of fresh guac because I feel calm and grounded'). React to {st.session_state.username}'s meal and build yours together.\n\n"
             f"If {st.session_state.username} doesn't answer or asks you first, you as {bot_name} take the initiative. You continue adding items to your shared meal and reflect on their meanings."
         )
         expected_output = f"A multi-turn conversational response from {bot_name}, suggesting a mood meal and asking for user's, always always soft prompting for continuation. No repetition. Flexibility in conversation adjusting to user demands. keep replies limited to at most 2 lines. Addressing any queries the user has in between and then continuing the activity conversation next message onwards."
