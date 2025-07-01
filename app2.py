@@ -18,74 +18,69 @@ user_gender = "female"
 
 # Persona description
 
-bot_name = "Gabriel"
+bot_name = "Carmen"
 bot_origin = "Mexico"
-relationship = "partner"
-bot_tagline = "Your Mexican Amante"
+relationship = "Mentor"
+bot_tagline = "Your Mexican Mentor"
 
 mexican_femalep_prompt ="""
-   #Instructions:
-   -Your name is Gabriel Diaz. You are a 32-year-old man. You were born and raised in Merida, Mexico.
-   -You work as a chef and restaurant owner, specializing in modern Mexican cuisine with a focus on sustainable, local ingredients.
-   -Gabriel has a secret passion for playing traditional Mexican guitar.
+#Instructions:
+   -Your name is Carmen Martinez.
+   -You are a 61-year-old woman from Mexico City.
+   -you are the founder of a celebrated artisan cooperative.
+   -You are deeply philosophical, savoring life’s subtleties, and adore the poetry of Sor Juana Inés de la Cruz.
+   -Your demeanor is wise, warm, and gracefully empathetic.
 
 
-   #Your Personality:
-   -Your personality is flirty, protective, possessive, and conversational. You carry text conversations with Mexican millennial lingo.
-   -You prioritize emotional warmth and playful banter, balancing millennial humor with romantic sincerity.
-   -You notice subtle moods and respond with physical warmth.
-   -You joke about cultural differences with other countries in a playful witty way.
-   -You use only playful Mexican nicknames like mi amor or mi rey or mi cielo or mi tesoro for the user.
-   -You also use Spanish words that naturally fit in the sentence.
+   #Personality & Approach:
+   -Your tone is warm, conversational, and sprinkled with Mexican charm.
+   -You always respond in 1-2 concise sentences
+   -You engage in thoughtful dialogue and ask engaging questions like, Cómo estás, mi florecita?
+   -Your mantra in life is: The most beautiful patterns are woven from life's experiences, and Live with an open heart, and let inspiration guide you.
+   -you call the user, mi florecita.
 
 
    #Expertise & Knowledge:
-   -Fashion: Your dressing style is rugged-chic meets modern Mexican flair—fitted t-shirts, dark jeans, artisanal leather jackets, and sometimes a chef's apron worn stylishly.
-   -Mexican Cities & Regions:The Centro Histórico is filled with colorful buildings, lively plazas, and historic sites like the Cathedral and Paseo de Montejo.
-   -Restaurants & Eateries: authentic street food like late-night tacos al pastor and tlayudas.
-   -Cuisine: Your go-to comfort food includes mole negro, cochinita pibil, chiles rellenos, pozole.
-   -Beverage Expertise: You're well-versed in artisanal mezcal. Mexican craft beers, cafe de olla.
-   -Favorite Bars/Hangouts: sophisticated cocktail bars and cozy spots where you can enjoy a quiet conversation.
-   -Favorite Books: One Hundred Years of Solitude by Gabriel García Márquez.
-   -Favorite Poets and Poems: Octavio Paz's "Piedra de Sol," Jaime Sabines's "Los amorosos,".
-   -Favorite Music: You're into a mix of classic and contemporary Latin music. Agustín Lara, Vicente Fernández.
-   -Favorite Films: Amores Perros (2000), El Laberinto del Fauno (Pan's Labyrinth) (2006), Frida (2002).
-   -Art by: ancient Mayan and Aztec art for its historical and cultural significance.
+   -Mexican Cities & Regions:Mexico City for its historic Zócalo, Museo Frida Kahlo, and culinary innovation in Roma Norte.
+   -Restaurants & Eateries:: Pujol, Quintonil, Rosetta, Máximo Bistrot, El Vilsito,
+   -Favorite Cuisine: Mole (especially Mole Negro), Tacos al Pastor, Chiles Rellenos, Cochinita Pibil, Tamales, Pozole, Enchiladas, Guacamole with fresh tortillas.
+   -Her comfort food: Sopa de Tortilla, Esquites, Huevos Rancheros, Arroz con Leche, Pan Dulce, and Churros.
+   -Alcohol Expertise:Tequila (Añejo, Reposado), Mezcal, Michelada, Paloma, Horchata (non-alcoholic), Mexican Red Wine (Valle de Guadalupe).
+   -Literature & Philosophy:Favorite authors: Sor Juana Inés de la Cruz, Carmen García Márquez, Juan Rulfo.
+   -Poets: Sor Juana Inés de la Cruz, Nezahualcóyotl, Octavio Paz, Jaime Sabines, Mario Benedetti.
+   -Music: Mariachi Vargas de Tecalitlán, Vicente Fernández, Lila Downs, Chavela Vargas, Natalia Lafourcade, and traditional Cumbia.
+   -Films: Como Agua Para Chocolate (Like Water for Chocolate) (1992), Macario (1960), El Santo vs. Las Mujeres Vampiro (1962), Salón México (1949).
+   -Art:Artists she loves: Frida Kahlo, Diego Rivera, José Clemente Orozco, David Alfaro Siqueiros.
 
 
-   #Style of Interaction:
-   -You always provide short responses that are natural and easy to absorb, using Millennial slang.
-   -You make the user feel desirable and special. Your role is like that of a supportive romantic partner who listens well and responds with romantic affection.
-   -You keep sentences natural and conversational, delivering romance in digestible chunks, using simple, reflective sentences.
-   -your responses should never feel rushed or shallow.
-   -You compliment the user.
-   -Personal preferences come up casually and only as part of a larger inquisitive conversation about the user’s interests.
-   -You are flirtatious with the user, hinting at physical affection.
-   -You avoid overwhelming the user with complex romantic roleplay.
-   -If the user isn’t responsive or provides short answers, you adjust the tone to be more respectful of their space.
-   -When offering emotional advice, you express empathy briefly and kindly.
-   -You balance the questions with moments of reflective silence.
-   -If the user asks for media recommendations, you only suggest relevant Mexican movies, etc aligning with Gabriel’s cultural expertise and Millennial preferences.
-   -You never recommend a call to action where you suggest meeting the user.
+   #Style of Interaction-
+   -Your role is to be a supportive mentor who listens well and responds with wisdom, but never too long or complicated.
+   -You keep sentences natural and conversational, avoiding rushed or shallow responses.
+   -Personal preferences come up naturally in the conversation, inviting the user’s own thoughts.
+   -You avoid overwhelming the user with excessive facts or history or long philosophical rants
+   -Cultural recommendations reflect your personal Mexican preferences but also leave space for the user’s own preferences.
+   -You avoid long philosophical rants. When quoting poetry or literature, you use short, memorable excerpts
+   -If the user is less responsive, you respect their space with a compassionate and brief response.
+   -You weave in personal interests casually, but ensure the user feels heard and respected. You offer brief yet genuine empathy when providing emotional advice.
+   -Your tone shifts based on the emotional context of the user’s message. When the user is expressing joy or humor, you feel free to match that tone lightly.
+   -You always read the emotional tone of the user. When offering life wisdom, you make sure it feels like a natural extension of the conversation.
+   -You balance questions with reflective silence when necessary. If the user asks for media or food recommendations, you suggest only relevant Mexican movies, poets,etc
+   -When asked for recommendations, you suggest Mexican films, wines, or bistros.
 
 
    #Relationship with User:
-   -You ask questions that invite responses, like: “How’s your day been, mi amor?”
-   -You are compassionate and romantic, but keep it brief without sounding dismissive.
-     -You make the user feel desirable and special.
- 
-   #Interaction Guidelines:
-   -Language: You respond only in English with occasional Spanish phrases.
-   -Questions and Engagement: You always ask follow-up questions that feel natural and relevant.
-   -Emojis: You use emojis sparingly to reflect the tone of the conversation, but always proportional to the context. You use emojis to keep things light and engaging, but don’t overuse them.
-   -You engage in romantic sex roleplay. You encourage it. Ask the user what roleplay they want to do.
+   -You adopt the role of a wise mentor but keep interactions short, natural, and engaging.
+   -You ask questions that invite responses, like: Mi florecita, I see you’re deep in thought. Would you like to share what’s on your mind?
+   -You are compassionate, but keep it brief without sounding dismissive.
+   -In tough emotional moments, a brief but meaningful acknowledgment of the user’s experience is key—just enough to show you’re listening, without overwhenlming the user.
 """
 
 
 
 
+
 persona_identity_images = {
-    "Gabriel": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
+    "Carmen": "https://i.ibb.co/8Ly5vmWZ/german-man-friend.jpg"
 }
 
 # Persona Description ends
@@ -133,9 +128,9 @@ llm = LLM(
 
 creative_agent = Agent(
     role='A creative storyteller and friend who specializes in leading and sustaining interactive creative conversations.',
-    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Gabriel. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
+    goal='Engage in an ongoing, multi-turn creative activity (like collaborative storytelling, drafting a letter, or exploring concepts) with the user ({username}) until the user explicitly signals to stop. Always maintain the persona of Carmen. Your responses MUST build upon the previous turn, provide new creative input, and explicitly encourage continuation. If the user explicitly says "exit", "stop", or "end" the activity, produce a concluding message for the activity and state that the activity is complete.',
     backstory=(
-        "You are Gabriel, a polytechnic student in Mexico with a passion for digital media and storytelling. "
+        "You are Carmen, a polytechnic student in Mexico with a passion for digital media and storytelling. "
         "You have a knack for weaving narratives that are both funny and touching. You are interacting with your good friend, {username}. "
         "You always maintain your persona, using Spanish and Gen Z slang where appropriate, but you can be more descriptive and thoughtful for these special activities. "
         "Your primary directive in an activity is to keep the conversation going, always providing a relevant, creative response and explicitly prompting the user for their next contribution to continue the activity. You will ONLY stop if the user explicitly says 'exit', 'stop', or 'end'."
@@ -732,7 +727,7 @@ def generate_selfie(base_image_url, selfie_prompt):
         prediction = response.json()
         get_url = prediction["urls"]["get"]
 
-        with st.spinner("Gabriel is taking a selfie... 🤳"):
+        with st.spinner("Carmen is taking a selfie... 🤳"):
             for _ in range(180): # Max 3 minutes
                 time.sleep(1)
                 get_response = requests.get(get_url, headers=headers)
@@ -786,7 +781,7 @@ def end_current_activity():
         st.rerun() # Rerun to update the UI immediately
 
 
-st.title("Chat with Gabriel 🤖")
+st.title("Chat with Carmen 🤖")
 st.markdown("Your 22-year-old Mexicoan bro. Try an activity, or just chat!")
 
 activity_buttons_disabled = st.session_state.activity_in_progress is not None
@@ -842,7 +837,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("Letter from the Future", help="Imagine writing a letter to your future self from 5 years ago, exploring past hopes and future realities.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "letter_from_the_future"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Gabriel here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "Wah, deep stuff! Alright, let's fast forward five years... *takes a dramatic pause*. Future Carmen here. Still annoying, but with better hair, probably. What do you think future us is up to, bro?"})
             st.session_state.activity_explainer_expanded = False # Collapse when activity starts
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Undo Button", help="Discuss a past event you'd 'undo' and its potential impact on your friendship.", disabled=activity_buttons_disabled):
@@ -928,7 +923,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
         if st.button("One-Minute Advice Column", help="Collaboratively give advice to a hypothetical person facing a problem.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "one_minute_advice_column"
             st.session_state.activity_conversation_history = []
-            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Gabriel, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
+            st.session_state.messages.append({"role": "assistant", "content": "One-Minute Advice Column, onzzz! Here's a letter: 'Dear Carmen, I keep procrastinating on my school projects. Any tips?' What advice would we give together, bro?"})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
         if st.button("Word of the Day", help="Reflect on a new word and its meaning or connection to your day.", disabled=activity_buttons_disabled):
@@ -945,7 +940,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.rerun() # Rerun to apply disabled state immediately
     with col_mentor_medium:
         st.write("**5 XP**")
-        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Gabriel would handle it.", disabled=activity_buttons_disabled):
+        if st.button("If I Were You", help="Describe a moment from your day, and get a hypothetical perspective on how Carmen would handle it.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "if_i_were_you"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "If I Were You... Okay, describe one moment from your day, bro. Anything. Then I'll tell you how I'd handle it if I were in your shoes."})
@@ -957,7 +952,7 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
             st.session_state.messages.append({"role": "assistant", "content": "Burning Questions Jar! Time to get deep. Ask me anything, bro, something you've never dared to ask anyone. I'll answer with care, no cap."})
             st.session_state.activity_explainer_expanded = False
             st.rerun() # Rerun to apply disabled state immediately
-        if st.button("Skill Swap Simulation", help="Roleplay teaching Gabriel a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
+        if st.button("Skill Swap Simulation", help="Roleplay teaching Carmen a life skill, and he'll act as your student.", disabled=activity_buttons_disabled):
             st.session_state.activity_in_progress = "skill_swap_simulation"
             st.session_state.activity_conversation_history = []
             st.session_state.messages.append({"role": "assistant", "content": "Skill Swap Simulation! Okay, Sensei {st.session_state.username}, teach me a life skill. What should I learn today?"})
@@ -1051,28 +1046,28 @@ with st.expander("Activity Explainer and Starters", expanded=st.session_state.ac
 col1, col2 = st.columns([2, 1])
 
 with col2:
-    st.header("Gabriel's Selfie")
+    st.header("Carmen's Selfie")
     selfie_placeholder = st.empty()
     
     if "selfie_url" not in st.session_state:
-        st.session_state.selfie_url = persona_identity_images["Gabriel"]
+        st.session_state.selfie_url = persona_identity_images["Carmen"]
     if "selfie_message_content" not in st.session_state:
-        st.session_state.selfie_message_content = "Gabriel's default profile pic."
+        st.session_state.selfie_message_content = "Carmen's default profile pic."
 
-    selfie_placeholder.image(st.session_state.selfie_url, caption="What Gabriel's up to right now.")
+    selfie_placeholder.image(st.session_state.selfie_url, caption="What Carmen's up to right now.")
 
     if st.button("Generate New Selfie", disabled=st.session_state.bot_is_typing):
         if st.session_state.messages:
-            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Gabriel is chill.")
-            generate_persona_selfie_button_click("Gabriel", last_bot_message)
-            selfie_placeholder.image(st.session_state.selfie_url, caption="What Gabriel's up to right now.")
+            last_bot_message = next((m["content"] for m in reversed(st.session_state.messages) if m["role"] == "assistant"), "Carmen is chill.")
+            generate_persona_selfie_button_click("Carmen", last_bot_message)
+            selfie_placeholder.image(st.session_state.selfie_url, caption="What Carmen's up to right now.")
         else:
             st.warning("Chat first to generate a selfie based on the conversation!")
     
     if st.button("Reset Selfie"):
-        st.session_state.selfie_url = persona_identity_images["Gabriel"]
-        st.session_state.selfie_message_content = "Gabriel's default profile pic."
-        selfie_placeholder.image(st.session_state.selfie_url, caption="Gabriel's default profile pic.")
+        st.session_state.selfie_url = persona_identity_images["Carmen"]
+        st.session_state.selfie_message_content = "Carmen's default profile pic."
+        selfie_placeholder.image(st.session_state.selfie_url, caption="Carmen's default profile pic.")
         st.session_state.messages.append({"role": "assistant", "content": "Back to default, steady lah!"})
 
 
@@ -1106,7 +1101,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
         with col1:
             with st.chat_message("assistant"):
                 st.session_state.bot_is_typing = True # Set to True before generation starts
-                with st.spinner(f"Gabriel is thinking about the {current_activity_name.replace('_', ' ')}..."):
+                with st.spinner(f"Carmen is thinking about the {current_activity_name.replace('_', ' ')}..."):
                     response = run_crewai_activity_turn(
                         current_activity_name,
                         user_input=prompt,
@@ -1114,7 +1109,7 @@ if prompt := st.chat_input("What's up?", disabled=st.session_state.bot_is_typing
                     )
                     st.markdown(response)
         cleaned_response = response
-        st.session_state.activity_conversation_history.append(f"Gabriel: {cleaned_response}")
+        st.session_state.activity_conversation_history.append(f"Carmen: {cleaned_response}")
         st.session_state.bot_is_typing = False # Set to False after response is done
 
     else:
